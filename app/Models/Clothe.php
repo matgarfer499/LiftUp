@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Clothe extends Model
+{
+    use HasFactory;
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'type_product',
+        'name',
+        'gender',
+        'discount',
+        'discount_rate',
+        'price',
+        'description',
+    ];
+
+    public function wishlist(){
+        return $this->belongsToMany(User::class, 'wishlists', 'idClo', 'idUse');
+    }
+    
+    public function clothingColor(){
+        return $this->belongsToMany(Color::class, 'clothes_colors', 'idClo', 'idCol');
+    }
+    
+    public function clothingSize(){
+        return $this->belongsToMany(Size::class, 'clothes_sizes', 'idClo', 'idSiz');
+    }
+
+    public function images(){
+        return $this->hasMany(Image::class, 'idClo', 'id');
+    }
+
+    public function review(){
+        return $this->hasMany(Review::class, 'idClo');
+    }
+
+}
+    
