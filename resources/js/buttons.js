@@ -8,7 +8,7 @@ let position = 'initial'
 
 function changeDisplay(){
     let layout = $('#layout')
-    let clothesDiv = $('.clothesDiv')
+    let clothesDiv = $('.gclothesDiv')
     let clothesImg = $('.clothesImg')
 
 
