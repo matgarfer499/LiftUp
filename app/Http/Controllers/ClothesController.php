@@ -14,7 +14,9 @@ class ClothesController extends Controller
         $menClothes = Clothe::where('gender', 'H')->with('images')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
         'clothes.discount_rate', 'clothes.price', 'clothes.description')->get();
 
-        return view('clothes.menClothes', compact('menClothes'));
+        $amount = $menClothes->count();
+
+        return view('clothes.menClothes', compact('menClothes', 'amount'));
     }
 
     public function women()
