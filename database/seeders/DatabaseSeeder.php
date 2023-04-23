@@ -61,6 +61,14 @@ class DatabaseSeeder extends Seeder
             }
         }
 
+        foreach($clothes as $clothe){
+            foreach($users as $user){
+                if(rand(0,1)==1){
+                    $clothe->purchase()->attach($user, ['purchased' => rand(0, 1)]);
+                }
+            }
+        }
+
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

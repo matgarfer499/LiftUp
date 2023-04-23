@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('purchase', function (Blueprint $table){
+        Schema::create('purchases', function (Blueprint $table){
             $table->increments('idPur');
             $table->integer('idUse')->unsigned();
             $table->integer('idClo')->unsigned();
-            $table->boolean('like');
+            $table->boolean('purchased');
 
             $table->foreign('idUse')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('idClo')->references('id')->on('clothes')->onDelete('cascade');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchase');
+        Schema::dropIfExists('purchases');
     }
 };

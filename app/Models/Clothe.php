@@ -24,6 +24,10 @@ class Clothe extends Model
     public function wishlist(){
         return $this->belongsToMany(User::class, 'wishlists', 'idClo', 'idUse');
     }
+
+    public function purchase(){
+        return $this->belongsToMany(User::class, 'purchases', 'idClo', 'idUse');
+    }
     
     public function clothingColor(){
         return $this->belongsToMany(Color::class, 'clothes_colors', 'idClo', 'idCol');
