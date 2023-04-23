@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('wishlists', function (Blueprint $table){
-            $table->increments('idWis');
+        Schema::create('purchase', function (Blueprint $table){
+            $table->increments('idPur');
             $table->integer('idUse')->unsigned();
             $table->integer('idClo')->unsigned();
             $table->boolean('like');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wishlists');
+        Schema::dropIfExists('purchase');
     }
 };
