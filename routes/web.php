@@ -20,8 +20,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+//Home page
+Route::get('/', function () {
+    return view('clothes.home');
+});
 //ver ropas de hombre
-Route::get('/', [ClothesController::class, 'men'])->name('menclothes.index');
+Route::get('/men', [ClothesController::class, 'men'])->name('menclothes.index');
 //ver ropas de mujer
 Route::get('/women', [ClothesController::class, 'women'])->name('womenclothes.index');
 //ver ropa especifica al clickar en la imagen
