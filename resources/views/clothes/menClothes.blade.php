@@ -7,7 +7,7 @@
     <div class="w-full font-normal text-sm text-[#9f9fa0]">Hombre</div>
     <div class="w-full font-bold text-lg">TODOS LOS PRODUCTOS <span class="font-normal text-xs text-[#9f9fa0]">{{$amount}} productos</span></div>
 </div>
-<div class="w-11/12 flex flex-wrap justify-between m-auto mb-4">
+<div class="w-11/12 flex flex-wrap sm:justify-end justify-between m-auto mb-4">
     <div class="w-20 h-12 absolute bg-white border-2 border-gray-300 rounded-full opacity-40 mt-1 ml-1 sm:hidden" id="layout">
     </div>
     <button class="w-44 h-14 border-2 border-gray-300 bg-gray-100 rounded-full flex justify-around items-center sm:hidden" id="displayBtn">
