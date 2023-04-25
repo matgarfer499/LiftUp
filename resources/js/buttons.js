@@ -8,38 +8,37 @@ let position = 'initial'
 
 function changeDisplay(){
     let layout = $('#layout')
-    let clothesDiv = $('.gclothesDiv')
+    let clothesDiv = $('.clothesDiv')
     let clothesImg = $('.clothesImg')
 
 
     if (position === 'initial'){
-        layout.animate({left: '102px'}, 500)
+        layout.animate({left: '96px'}, 500)
         position = 'moved'
 
         //Cambio de clases
         clothesDiv.each(function(){
-            $(this).removeClass('w-[360px]')
-            $(this).addClass('w-[160px]')
+            $(this).removeClass('w-full')
+            $(this).addClass('w-5/12')
         })
         
         clothesImg.each(function() {
-            $(this).removeClass('h-[500px]')
+            $(this).removeClass('h-full')
             $(this).addClass('h-[250px]')
         })
     }else{
-        layout.animate({left: '17px'}, 500)
+        layout.animate({left: '23px'}, 500)
         position = 'initial'
 
         //Cambio de clases
         clothesDiv.each(function(){
-            $(this).removeClass('w-[160px]')
-            $(this).addClass('w-[360px]')
+            $(this).removeClass('w-5/12')
+            $(this).addClass('w-full')
         })
 
         clothesImg.each(function() {
             $(this).removeClass('h-[250px]')
-            $(this).addClass('h-[500px]')
+            $(this).addClass('h-full')
         })
     }
-    console.log(position)
 }

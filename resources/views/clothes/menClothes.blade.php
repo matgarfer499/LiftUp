@@ -10,9 +10,8 @@
     </div>
 </div>
 <div class="w-full flex justify-center">
-    <div class="w-11/12 flex flex-wrap sm:justify-end justify-between m-auto mb-4">
-        <div class="w-20 h-8 absolute bg-white border-2 border-gray-300 rounded-full opacity-40 mt-1 ml-1 sm:hidden" id="layout">
-        </div>
+    <div class="w-11/12 flex flex-wrap sm:justify-end justify-between mb-4">
+        <div class="w-20 h-8 absolute bg-white border-2 border-gray-300 rounded-full opacity-40 mt-1 ml-1 sm:hidden" id="layout"></div>
         <button class="w-40 h-10 border-2 border-gray-300 bg-gray-100 rounded-full flex justify-around items-center sm:hidden" id="displayBtn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z" />
