@@ -1,4 +1,20 @@
-h1{
-    color: aqua;
-    font-size: medium;
+.scrollbar-x-hidden {
+    overflow-x: hidden;
+}
+
+.scrollbar-x-hidden {
+    background-color: #ffffff;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+
+.scrollbar-x-hidden::-webkit-scrollbar {
+    width: 3px;
+    height: 5px;
+    background-color: #a4a2a2;
+}
+
+.scrollbar-x-hidden::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 5px;
 }

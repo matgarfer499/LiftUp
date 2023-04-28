@@ -9,6 +9,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
   <title>@yield('title')</title>
   @vite('resources/css/app.css')
+  @vite('resources/css/homePage.css')
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   @vite('resources/js/buttons.js')
 </head>
