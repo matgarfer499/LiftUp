@@ -23,6 +23,7 @@ return new class extends Migration
             $table->tinyInteger('discount_rate');
             $table->float('price', 5, 2);
             $table->text('description');
+            $table->text('material');
         });
     }
 

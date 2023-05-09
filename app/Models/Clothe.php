@@ -19,6 +19,7 @@ class Clothe extends Model
         'discount_rate',
         'price',
         'description',
+        'material',
     ];
 
     public function wishlist(){

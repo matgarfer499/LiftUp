@@ -26,6 +26,7 @@ class ClotheFactory extends Factory
             'discount_rate' => fake()->numberBetween(15, 90),
             'price' => fake()->randomFloat(1, 5, 100),
             'description' => fake()->paragraph(),
+            'material' => fake()->paragraph(),
         ];
     }
 }

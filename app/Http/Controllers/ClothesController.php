@@ -32,7 +32,7 @@ class ClothesController extends Controller
     public function view($id)
     {
         $images = Clothe::where('id', $id)->with('images')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
-                'clothes.discount_rate', 'clothes.price', 'clothes.description')->get();
+                'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material')->get();
 
         $colores = Clothe::with('clothingColor')->where('id', $id)->get();
 
