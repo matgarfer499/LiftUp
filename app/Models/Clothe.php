@@ -35,7 +35,7 @@ class Clothe extends Model
     }
     
     public function clothingSize(){
-        return $this->belongsToMany(Size::class, 'clothes_sizes', 'idClo', 'idSiz');
+        return $this->belongsToMany(Size::class, 'clothes_sizes', 'idClo', 'idSiz')->withPivot('stock');;
     }
 
     public function images(){

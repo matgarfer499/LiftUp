@@ -9,5 +9,7 @@
 </head>
 <body>
     Esta la landing
+    <br>
+    <a href="{{route('menclothes.index')}}">Ir a ver las ropas</a>
 </body>
 </html>

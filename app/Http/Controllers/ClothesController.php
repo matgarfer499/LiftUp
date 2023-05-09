@@ -12,7 +12,7 @@ class ClothesController extends Controller
     {
         
         $menClothes = Clothe::where('gender', 'H')->with('images')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
-        'clothes.discount_rate', 'clothes.price', 'clothes.description')->get();
+        'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material')->get();
 
         $amount = $menClothes->count();
 

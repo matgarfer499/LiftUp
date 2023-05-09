@@ -7,7 +7,7 @@
     <div class="w-6/12">
         <div class="w-2/5 absolute h-[90vh] top-20 snap-y snap-mandatory overflow-scroll scrollbar-x-hidden">
             @for($i = 0; $i< count($images[0]->images); $i++)
-            <div class="snap-end flex w-[96%] h-screen">
+            <div class="snap-start flex w-[96%] h-screen">
                 <img src="{{$images[0]->images[$i]->url}}">
             </div>
             @endfor
@@ -28,21 +28,31 @@
             @endif
         </div>
         <br>
-        <p class="text-[#4B4949] w-full">{{$images[0]->description}}</p>
-        <div class="w-full border-y-2 border-x-0 border-[#acaaaa] flex justify-between my-2">
-            <span class="p-1 font-bold text-xl">COMPOSIÓN Y MATERIALES</span>
-            <span class="font-bold text-2xl">+</span>
-        </div>
+        <p class="text-[#4B4949] w-full text-justify">{{$images[0]->description}}</p>
+        <details class="w-full border-y-2 border-x-0 border-[#acaaaa] my-4 py-2">
+            <summary class="flex justify-between" id="materialsDisplay">
+                <span class="p-1 font-bold text-xl">
+                    COMPOSIÓN Y MATERIALES
+                </span> 
+                <span class="font-bold text-2xl" id="moreLess">+</span>
+            </summary>
+            <p class="text-[#4B4949] text-justify w-11/12 p-2">{{$images[0]->material}}</p>
+        </details>
         <div class="w-full flex flex-wrap justify-evenly mt-4">
             @for($i = 0; $i < count($colores[0]->clothingColor); $i++)
                 <div class="w-[25px] h-[25px] mr-2 cursor-pointer border-2 border-[#acaaaa] hover:border-4 focus:border-2 active:border-white" style="background-color:#{{$colores[0]->clothingColor[$i]->color}}">
                 </div>
             @endfor
         </div>
-        <div class="w-full border-y-2 border-x-0 border-black flex flex-col justify-center items-start mt-4">
+        <div class="w-full border-y-2 border-x-0 border-black flex flex-col justify-center mt-4">
             @for($i = 0; $i < count($tallas[0]->clothingSize); $i++)
-                <div class="h-[35px] w-full cursor-pointer hover:bg-[#e0e0e0] text-sm flex items-center">
-                    {{$tallas[0]->clothingSize[$i]->size}}
+                <div class="h-[35px] w-full cursor-pointer hover:bg-[#e0e0e0] text-sm flex items-center justify-between">
+                    <span>{{$tallas[0]->clothingSize[$i]->size}}</span>
+                    <span class="text-[#4B4949]">
+                        @if($tallas[0]->clothingSize[$i]->pivot->stock < 10)
+                            Quedan pocas unidades
+                        @endif
+                    </span>
                 </div>
                 @endfor
         </div>

@@ -10,8 +10,9 @@
   <title>@yield('title')</title>
   @vite('resources/css/app.css')
   @vite('resources/css/homePage.css')
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   @vite('resources/js/buttons.js')
+  @vite('resources/js/images.js')
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="bg-white m-0">
