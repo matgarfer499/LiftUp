@@ -7,20 +7,22 @@
     <div class="w-6/12">
         <div class="w-2/5 absolute h-[90vh] top-20 snap-y snap-mandatory overflow-scroll scrollbar-x-hidden">
             @for($i = 0; $i< count($images[0]->images); $i++)
-            <div class="snap-start flex w-[96%] h-screen">
-                <img src="{{$images[0]->images[$i]->url}}">
+            <div class="imgContainer snap-start flex w-[96%] h-[90vh]">
+                <img src="{{$images[0]->images[$i]->url}}" class="object-cover">
             </div>
             @endfor
         </div>
-        <div class="w-10/12 flex flex-wrap justify-start flex-col items-end m-auto">
+        <div class="cursor-pointer w-12/12 flex flex-wrap justify-start flex-col items-end m-auto">
             @for($i = 0; $i< count($images[0]->images); $i++)
-                <img src="{{$images[0]->images[$i]->url}}" class="w-1/12 my-1">
+            <button class="imgSelector w-2/12" data-index="{{$i}}">
+                <img src="{{$images[0]->images[$i]->url}}" class="w-6/12 my-1 hover:border-2 hover:border-black">
+            </button>
                 @endfor
         </div>
     </div>
     <div class="w-5/12">
-        <div class="w-full flex justify-between">
-            <span class="text-4xl font-bold uppercase">{{$images[0]->name}}</span>
+        <div class="w-full flex justify-between items-center">
+            <span class="text-3xl font-semibold uppercase">{{$images[0]->name}}</span>
             @if($images[0]->discount == 1)
             <span class="text-red-600 text-xl float-right mt-[12px]">-{{$images[0]->discount_rate}}% | {{round($images[0]->price - ($images[0]->price * $images[0]->discount_rate/100),2)}} EUR</span>
             @else
