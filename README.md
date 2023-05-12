@@ -27,4 +27,4 @@ Los objetivos de este proyecto están divididos en dos partes. Una parte de admi
 [Diseño creado en figma](https://www.figma.com/file/EZgVnKqGBk1qS1NS3y4SfH/Landing-page?node-id=0%3A1&t=V9xlreLYbIt0Hclc-1)
 
 ### Diseño de la base de datos (Habrá modificaciones durante el desarrollo de la aplicación)
-<img src="https://github.com/matgarfer499/ProyectoDAW/blob/main/Base%20de%20datos.png?raw=true">
+<img src="https://github.com/matgarfer499/LiftUp/blob/main/Base%20de%20datos.png">
