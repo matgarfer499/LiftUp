@@ -1,23 +1,30 @@
-<p align="center">Proyecto Laravel</p>
-(Antonio se que esto esta pasado de hora, pero el readme que subi ayer lo actualize en el mismo github y al subirte el .env se volvio a subir el readme que hace por defecto laravel y no me di cuenta).
+# Proyecto DAW - LiftUP
+Este proyecto se va a basar en una página web en la que puedes comprar ropa/accesorios para el gimnasio. La marca que representa la web se llamará LiftUp.
 
-La idea del proyecto se basa en una tienda de ropa con temática deportiva.
-A continuación explico las pantallas que se pueden visualizar una vez hechas las migraciones y llenado la base de datos con 
-los seeders(Con hacer 'php artisan migrate --seed', se llena con factories y semilleros predefinidos):
+Los objetivos de este proyecto están divididos en dos partes. Una parte de administrador y otra parte de usuario.
 
-- La primera vista al entrar es la página principal que se puede visualizar la ropa de hombre.
-  Esta vista usa un layout que es la barra de navegación que se encuentre en el top de la pantalla que contiene las rutas para ver las ropas de hombre y mujer, el logo de la web y botones de interacciones, los cuales el único que funciona por ahora es el de usuario.
+* Cosas que podrá hacer el administrador :
+  - Crear, borrar, modificar cualquier prenda de ropa que se encuentre dentro de la base de datos.
+  - Para dicha prenda de ropa que se cree o esté creada de antes, podrá añadir o eliminar imágenes.
+  - Revisar los comentarios que dejen los usuarios en las prendas tras su compra y poder eliminar dicho comentario si usa lenguaje malsonante y poder vetar a dicho           usuario para que no pueda volver a comentar.
+  - Contará con un botón fixed fuera de la vista del administrador para poder mirar los cambios que hizo y dicho botón lo llevará de nuevo al CRUD.
 
-- Si entramos en una ropa no llevara a otra vista con esa ropa en cuestion, con información sobre ella como más imagenes, colores y  tallas disponibles y reviews de los usuarios.
+* Cosas que podrá hacer un usuario:
+  - Crear una cuenta y modificar su perfil.
+  - Ver toda la ropa disponible que haya en la web, ya esté registrado o no.
+  - Mirar en detalle cada prenda de ropa, la cual podrá guardar en favoritos o en el carro una vez haya seleccionado talla y color.
+  - Si el usuario ha hecho una compra, podrá dejar una reseña de dicha prenda.
 
-- Al clickar en el icono de usuario este nos llevara al login si no estamos autenticados, dentro tenemos la opcion de logearnos o crear una cuenta si no tenemos una. En los seeders hay dos predifinidas(correo, contraseña):
-    * Admin : admin@liftup.es, admin. 
-    * Usuario no admin: user@gmail.com, 123456. 
+## Tecnologías para el Back-End:
+ - MySQL para almacenar los datos.
+ - Laravel 9.
 
-  Ahora dependiendo de si un usuario es admin o no ocurre lo siguiente:
+## Tecnologías para el Front-End:
+ - CSS para la landing page y Tailwind CSS para el resto de la web.
+ - Javascript.
 
-    * Usuario no admin: Este una vez logueado sera llevado de nuevo a la página principal, este si vuelve a darle al icono de usuario sera llevado a un dashboard, con sus datos y con una barra lateral con las rutas de poder cerrar sesión y configuración con las opciones por defecto de Laravel para editar un usuario. Ademas este si intenta acceder a una ruta admin no tendra permisos y le dara un error 403 | Forbidden
+### Boceto (aún en desarrollo)
+[Diseño creado en figma](https://www.figma.com/file/EZgVnKqGBk1qS1NS3y4SfH/Landing-page?node-id=0%3A1&t=V9xlreLYbIt0Hclc-1)
 
-    * Admin: Cuando inicia sesión este es llevado a una ruta distinta solo para admins en el que tiene el control para poder crear nuevas ropas, editarlas y borrarlas. Como se podra ver tambien hay una barra lateral para elegir entre el CRUD de ropas y otro para poder eliminar o insertar imagenes a las ropas. Si clica en el logo este sera llevado a la página principal y por si desea ver cambios. Además si un usuario es admin le aparecera un boton arriba a la izquierda para volver a los CRUDs y realizar cambios.
-
-Cada vista y layaout ha sido creada en blade.
+### Diseño de la base de datos (Habrá modificaciones durante el desarrollo de la aplicación)
+<img src="https://github.com/matgarfer499/ProyectoDAW/blob/main/Base%20de%20datos.png?raw=true">
