@@ -22,7 +22,7 @@ class ClothesController extends Controller
     public function women()
     {
         $womenClothes = Clothe::where('gender', 'M')->with('images')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
-        'clothes.discount_rate', 'clothes.price', 'clothes.description')->get();
+        'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material')->get();
 
         $amount = $womenClothes->count();
 
