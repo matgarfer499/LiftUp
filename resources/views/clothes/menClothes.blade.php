@@ -36,7 +36,7 @@
         @if($man->images->first()?->url)
         <div class="clothesDiv 2xl:w-2/12 xl:w-[250px] lg:w-[300px] sm:w-[300px] w-full mx-2 mb-10">
             <a href="{{route('images.see', ['id' => $man->id])}}">
-                <img src="{{$man->images->first()?->url}}" class="clothesImg w-full 2xl:h-[400px] cursor-pointer hover:border-4 hover:border-gray-400" alt>
+                <img src="{{$man->images->first()?->url}}" class="clothesImg w-full 2xl:h-[400px] cursor-pointer hover:border-4 hover:border-gray-400 object-cover" alt>
             </a>
             <div class="w-full flex flex-wrap">
                 <div class="w-full flex justify-between items-center">
