@@ -19,7 +19,6 @@ class UsersTableSeeder extends Seeder
             [
                 'first_name' => "Matías",
                 "last_name" => "García",
-                "gender" => "H",
                 "admin" => "1",
                 "email" => "admin@liftup.es",
                 "password" => bcrypt("admin"),
@@ -27,7 +26,6 @@ class UsersTableSeeder extends Seeder
             [
                 'first_name' => "user",
                 "last_name" => "user",
-                "gender" => "H",
                 "admin" => "0",
                 "email" => "user@gmail.com",
                 "password" => bcrypt("123456"),
