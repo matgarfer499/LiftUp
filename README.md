@@ -28,3 +28,6 @@ Los objetivos de este proyecto están divididos en dos partes. Una parte de admi
 
 ### Diseño de la base de datos (Habrá modificaciones durante el desarrollo de la aplicación)
 <img src="https://github.com/matgarfer499/LiftUp/blob/main/Base%20de%20datos.png">
+
+### Video funcionalidades(checkpoint)
+[Ver video](https://youtu.be/KZnF8F89qOk)
