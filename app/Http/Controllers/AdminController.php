@@ -26,6 +26,7 @@ class AdminController extends Controller
             'discount_rate' => 'required',
             'price' => 'required',
             'description' => 'required',
+            'material' => 'required',
         ]);
 
         $clothe = new Clothe();
@@ -36,6 +37,7 @@ class AdminController extends Controller
         $clothe->discount_rate = $validarDatos['discount_rate'];
         $clothe->price = $validarDatos['price'];
         $clothe->description = $validarDatos['description'];
+        $clothe->material = $validarDatos['material'];
         $clothe->save();
 
         return redirect()->route('admin.all')->with('success', 'La ropa ha sido agregada exitosamente.');
@@ -58,6 +60,7 @@ class AdminController extends Controller
             'discount_rate' => 'required',
             'price' => 'required',
             'description' => 'required',
+            'material' => 'required',
         ]);
 
         $clothe->type_product = $validarDatos['type_product'];
@@ -67,6 +70,7 @@ class AdminController extends Controller
         $clothe->discount_rate = $validarDatos['discount_rate'];
         $clothe->price = $validarDatos['price'];
         $clothe->description = $validarDatos['description'];
+        $clothe->material = $validarDatos['material'];
         $clothe->save();
 
         return redirect()->route('admin.all');
@@ -76,7 +80,7 @@ class AdminController extends Controller
     public function images()
     {
         $images = Clothe::with('images')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
-                'clothes.discount_rate', 'clothes.price', 'clothes.description')->paginate(5);
+                'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material')->paginate(5);
 
         return view('admin.imagesControl', compact('images'));
     }

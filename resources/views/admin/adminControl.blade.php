@@ -67,6 +67,11 @@
                     <textarea id="description" name="description" wire:model="description" class="form-input rounded-md shadow-sm mt-1 w-full"></textarea>
                     @error('description') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
+                <div class="mb-4">
+                    <label for="material" class="w-full text-gray-700 font-bold mb-2">Materiales:</label>
+                    <textarea id="material" name="material" wire:model="material" class="form-input rounded-md shadow-sm mt-1 w-full"></textarea>
+                    @error('material') <span class="text-red-500">{{ $message }}</span> @enderror
+                </div>
                 <div class="mt-6 flex justify-end">
                     <x-primary-button class="mr-3">
                         {{ __('Añadir') }}
@@ -84,9 +89,10 @@
                 <th class="p-4">Producto</th>
                 <th class="p-4">Nombre</th>
                 <th class="p-4">Genero</th>
-                <th class="p-4 w-1/4">Descuento</th>
+                <th class="p-4 w-2/12">Descuento</th>
                 <th class="p-4">Precio</th>
-                <th class="p-4 w-1/4">Descripcion</th>
+                <th class="p-4 w-1/5">Descripcion</th>
+                <th class="p-4 w-1/5">Materiales</th>
                 <th></th>
             </tr>
         </thead>
@@ -107,6 +113,7 @@
                 @endif
                 <td class="p-4">{{$clothe->price}}€</td>
                 <td class="w-1/4 truncate text-gray-600">"{{$clothe->description}}"</td>
+                <td class="w-1/5 truncate text-gray-600">"{{$clothe->material}}"</td>
                 <td class="px-4 py-2 flex justify-center">
                     <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'edit-clothe-{{$clothe->id}}')" class="mx-2 cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:stroke-green-400">
@@ -166,6 +173,11 @@
                                 <label for="description" class="w-full text-gray-700 font-bold mb-2">Descripcion:</label>
                                 <textarea id="description" name="description" wire:model="description" class="form-input rounded-md shadow-sm mt-1 w-full" placeholder="{{$clothe->description}}"></textarea>
                                 @error('description') <span class="text-red-500">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="material" class="w-full text-gray-700 font-bold mb-2">Materiales:</label>
+                                <textarea id="material" name="material" wire:model="material" class="form-input rounded-md shadow-sm mt-1 w-full" placeholder="{{$clothe->material}}"></textarea>
+                                @error('material') <span class="text-red-500">{{ $message }}</span> @enderror
                             </div>
                             <div class="mt-6 flex justify-end">
                                 <x-primary-button class="mr-3">

@@ -120,7 +120,6 @@
                             Olvide mi contraseña
                         </a>
                         @endif
-                        <a href="{{ route('register') }}" class="text-sm hover:underline cursor-pointer">¿No tienes cuenta? Registrate.</a>
                     </div>
                 </form>
             </div>
