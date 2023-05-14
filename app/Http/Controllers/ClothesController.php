@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Clothe;
 use App\Models\Review;
+use App\Models\User;
 
 class ClothesController extends Controller
 {
@@ -41,5 +42,12 @@ class ClothesController extends Controller
         $reviews = Review::with('userReview')->where('idClo', $id)->get();
 
         return view('clothes.images', compact('images', 'colores', 'tallas', 'reviews'));
+    }
+
+    public function wishlist($idUse)
+    {
+        
+        $liked = User::with('wishlist')->where('id', $idUse)->get();
+        return view('clothes.wishlist', compact('liked'));
     }
 }

@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
         foreach($clothes as $clothe){
             foreach($users as $user){
                 if(rand(0,1)==1){
-                    $clothe->wishlist()->attach($user, ['like' => rand(0, 1)]);
+                    $clothe->wishlist();
                 }
             }
         }

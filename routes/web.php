@@ -30,6 +30,8 @@ Route::get('/men', [ClothesController::class, 'men'])->name('menclothes.index');
 Route::get('/women', [ClothesController::class, 'women'])->name('womenclothes.index');
 //ver ropa especifica al clickar en la imagen
 Route::get('/clothing/{id}', [ClothesController::class, 'view'])->name('images.see');
+//Ver ropa marcada como "me gusta"
+Route::get('/wishlist/{idUse}', [ClothesController::class, 'wishlist'])->name('wishlist.index');
 
 Route::middleware('auth')->group(function () {
     //Profile options
