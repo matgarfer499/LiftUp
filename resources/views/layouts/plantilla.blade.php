@@ -17,7 +17,7 @@
 
 <body class="bg-white m-0">
   <header class="">
-    <nav class="fixed z-10 w-full flex flex-wrap justify-between items-center bg-white border-b-2 border-b-gray-400">
+    <nav class="fixed z-10 w-full flex flex-wrap justify-between items-center bg-white border-b-[1px] border-b-gray-400">
       <div class="sm:hidden flex justify-evenly w-3/12">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />

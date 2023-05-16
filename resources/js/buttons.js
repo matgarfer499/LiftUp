@@ -42,3 +42,19 @@ function changeDisplay(){
         })
     }
 }
+
+//Cambiar el color del corazon al usuario cuando da like a una ropa o lo quita
+let likeBtn = $(".likeBtn");
+
+likeBtn.each(function(){
+    $(this).click(function(){
+        let svg = $(this).children("svg");
+        let fill = svg.attr("fill");
+
+        if(fill == "black"){
+            svg.attr("fill", "none");
+        }else{
+            svg.attr("fill", "black");
+        }
+    });
+});

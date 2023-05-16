@@ -12,10 +12,22 @@ class ClothesController extends Controller
     public function men()
     {
         
-        $menClothes = Clothe::where('gender', 'H')->with('images')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
+        $menClothes = Clothe::where('gender', 'H')->with('images')->with('wishlist')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
         'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material')->get();
-
         $amount = $menClothes->count();
+
+        
+        foreach ($menClothes as $man) {
+            $isLiked = false; // Valor predeterminado
+            foreach ($man->wishlist as $liked) {
+                if ($liked->pivot->idUse == auth()->user()->id) {
+                    $isLiked = true; // Se encontró un "liked"
+                break; // Salir del bucle interno
+                }
+            }
+            // Asignar el valor de $isLiked al objeto $man
+            $man->isLiked = $isLiked;
+        }
 
         return view('clothes.menClothes', compact('menClothes', 'amount'));
     }
@@ -24,8 +36,19 @@ class ClothesController extends Controller
     {
         $womenClothes = Clothe::where('gender', 'M')->with('images')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
         'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material')->get();
-
         $amount = $womenClothes->count();
+
+        foreach ($womenClothes as $woman) {
+            $isLiked = false; // Valor predeterminado
+            foreach ($woman->wishlist as $liked) {
+                if ($liked->pivot->idUse == auth()->user()->id) {
+                    $isLiked = true; // Se encontró un "liked"
+                break; // Salir del bucle interno
+                }
+            }
+            // Asignar el valor de $isLiked al objeto $man
+            $woman->isLiked = $isLiked;
+        }
 
         return view('clothes.womenClothes', compact('womenClothes', 'amount'));
     }
@@ -46,8 +69,10 @@ class ClothesController extends Controller
 
     public function wishlist($idUse)
     {
-        
         $liked = User::with('wishlist')->where('id', $idUse)->get();
+
+        //dd($liked[0]->wishlist[0]);
+
         return view('clothes.wishlist', compact('liked'));
     }
 }
