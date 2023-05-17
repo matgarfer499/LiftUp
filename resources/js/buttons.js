@@ -43,18 +43,40 @@ function changeDisplay(){
     }
 }
 
-//Cambiar el color del corazon al usuario cuando da like a una ropa o lo quita
 let likeBtn = $(".likeBtn");
-
-likeBtn.each(function(){
-    $(this).click(function(){
-        let svg = $(this).children("svg");
-        let fill = svg.attr("fill");
-
-        if(fill == "black"){
-            svg.attr("fill", "none");
-        }else{
-            svg.attr("fill", "black");
-        }
+//Cambiar el color del corazon al usuario cuando da like a una ropa o lo quita
+function changeHeartColor(btn){
+    let svg = btn.children("svg");
+    let fill = svg.attr("fill");
+    console.log(svg, fill);
+    if(fill == "black"){
+        svg.attr("fill", "none");
+    }else{
+       svg.attr("fill", "black");
+    }
+}
+//Request ajax para enviar los datos a la bd sin recargar la pagina
+$(document).ready(function(){
+    likeBtn.each(function(){
+        $(this).click(function(){
+            let idClo = $(this).data('clo');
+            let token = $('meta[name="csrf-token"]').attr('content');
+            let clickedBtn = $(this);
+            $.ajax({
+                url: "/wishlist/add",
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': token // Agregar el token CSRF como un encabezado personalizado
+                },
+                data: {idClo: idClo},
+                success: function(response){
+                    changeHeartColor(clickedBtn);
+                    console.log("Añadido a la wishlist");
+                },
+                error: function(xhr, status, error){
+                    console.log(xhr.responseText);
+                }
+            });
+        });
     });
 });

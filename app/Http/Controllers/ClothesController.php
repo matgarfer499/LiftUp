@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Clothe;
 use App\Models\Review;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class ClothesController extends Controller
 {
@@ -20,7 +21,7 @@ class ClothesController extends Controller
         foreach ($menClothes as $man) {
             $isLiked = false; // Valor predeterminado
             foreach ($man->wishlist as $liked) {
-                if ($liked->pivot->idUse == auth()->user()->id) {
+                if ($liked->pivot->idUse == auth()->user()?->id) {
                     $isLiked = true; // Se encontró un "liked"
                 break; // Salir del bucle interno
                 }
@@ -41,7 +42,7 @@ class ClothesController extends Controller
         foreach ($womenClothes as $woman) {
             $isLiked = false; // Valor predeterminado
             foreach ($woman->wishlist as $liked) {
-                if ($liked->pivot->idUse == auth()->user()->id) {
+                if ($liked->pivot->idUse == auth()->user()?->id) {
                     $isLiked = true; // Se encontró un "liked"
                 break; // Salir del bucle interno
                 }
@@ -74,5 +75,21 @@ class ClothesController extends Controller
         //dd($liked[0]->wishlist[0]);
 
         return view('clothes.wishlist', compact('liked'));
+    }
+
+    public function addToWishlist(Request $request)
+    {
+        $idClo = $request->input('idClo');
+        $idUse = auth()->id();
+
+        $user = User::findOrFail($idUse);
+
+        if ($user->wishlist()->wherePivot('idClo', $idClo)->exists()) {
+            $user->wishlist()->detach($idClo, ['idUse' => $idUse, 'idClo' => $idClo]);
+            return response()->json(['success' => true]);
+        } else {
+            $user->wishlist()->attach($idClo, ['idUse' => $idUse, 'idClo' => $idClo]);
+            return response()->json(['success' => true]);
+        }
     }
 }
