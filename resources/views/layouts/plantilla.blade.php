@@ -7,6 +7,9 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Importamos tailwind y js-->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
+  <script>
+    var isAuthenticated = {{ auth()->check() ? 'true' : 'false' }};
+  </script>
   <title>@yield('title')</title>
   @vite('resources/css/app.css')
   @vite('resources/css/homePage.css')

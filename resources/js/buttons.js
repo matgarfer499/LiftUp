@@ -62,21 +62,24 @@ $(document).ready(function(){
             let idClo = $(this).data('clo');
             let token = $('meta[name="csrf-token"]').attr('content');
             let clickedBtn = $(this);
-            $.ajax({
-                url: "/wishlist/add",
-                type: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': token // Agregar el token CSRF como un encabezado personalizado
-                },
-                data: {idClo: idClo},
-                success: function(response){
-                    changeHeartColor(clickedBtn);
-                    console.log("Añadido a la wishlist");
-                },
-                error: function(xhr, status, error){
-                    console.log(xhr.responseText);
-                }
+            if(isAuthenticated){
+                $.ajax({
+                    url: "/wishlist/add",
+                    type: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': token // Agregar el token CSRF como un encabezado personalizado
+                    },
+                    data: {idClo: idClo},
+                    success: function(response){
+                        changeHeartColor(clickedBtn);
+                    },
+                    error: function(xhr, status, error){
+                        console.log(xhr.responseText);
+                    }
+                });
+            }else{
+                window.location.href = '/login';
+            }
             });
-        });
     });
 });
