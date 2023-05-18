@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Clothe;
 use App\Models\Review;
-use App\Models\User;
-use Illuminate\Http\Request;
 
 class ClothesController extends Controller
 {
@@ -44,30 +42,5 @@ class ClothesController extends Controller
         $reviews = Review::with('userReview')->where('idClo', $id)->get();
 
         return view('clothes.images', compact('images', 'colores', 'tallas', 'reviews'));
-    }
-
-    public function wishlist($idUse)
-    {
-        $liked = User::with('wishlist')->where('id', $idUse)->get();
-
-        //dd($liked[0]->wishlist[0]);
-
-        return view('clothes.wishlist', compact('liked'));
-    }
-
-    public function addToWishlist(Request $request)
-    {
-        $idClo = $request->input('idClo');
-        $idUse = auth()->id();
-
-        $user = User::findOrFail($idUse);
-
-        if ($user->wishlist()->wherePivot('idClo', $idClo)->exists()) {
-            $user->wishlist()->detach($idClo, ['idUse' => $idUse, 'idClo' => $idClo]);
-            return response()->json(['success' => true]);
-        } else {
-            $user->wishlist()->attach($idClo, ['idUse' => $idUse, 'idClo' => $idClo]);
-            return response()->json(['success' => true]);
-        }
     }
 }
