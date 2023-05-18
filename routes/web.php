@@ -26,6 +26,8 @@ Route::get('/', function () {
 });
 //ver ropas de hombre
 Route::get('/men', [ClothesController::class, 'men'])->name('menclothes.index');
+//ver ropas
+Route::get('/clothes/{gender}', [ClothesController::class, 'clothes'])->name('clothes.index');
 //ver ropas de mujer
 Route::get('/women', [ClothesController::class, 'women'])->name('womenclothes.index');
 //ver ropa especifica al clickar en la imagen

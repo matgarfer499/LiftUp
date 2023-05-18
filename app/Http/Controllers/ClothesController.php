@@ -10,48 +10,26 @@ use Illuminate\Http\Request;
 
 class ClothesController extends Controller
 {
-    public function men()
+    public function clothes($gender)
     {
-        
-        $menClothes = Clothe::where('gender', 'H')->with('images')->with('wishlist')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
+        $clothes = Clothe::where('gender', $gender)->with('images')->with('wishlist')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
         'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material')->get();
-        $amount = $menClothes->count();
+        $amount = $clothes->count();
 
         
-        foreach ($menClothes as $man) {
+        foreach ($clothes as $clothe) {
             $isLiked = false; // Valor predeterminado
-            foreach ($man->wishlist as $liked) {
+            foreach ($clothe->wishlist as $liked) {
                 if ($liked->pivot->idUse == auth()->user()?->id) {
                     $isLiked = true; // Se encontró un "liked"
                 break; // Salir del bucle interno
                 }
             }
             // Asignar el valor de $isLiked al objeto $man
-            $man->isLiked = $isLiked;
+            $clothe->isLiked = $isLiked;
         }
 
-        return view('clothes.menClothes', compact('menClothes', 'amount'));
-    }
-
-    public function women()
-    {
-        $womenClothes = Clothe::where('gender', 'M')->with('images')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
-        'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material')->get();
-        $amount = $womenClothes->count();
-
-        foreach ($womenClothes as $woman) {
-            $isLiked = false; // Valor predeterminado
-            foreach ($woman->wishlist as $liked) {
-                if ($liked->pivot->idUse == auth()->user()?->id) {
-                    $isLiked = true; // Se encontró un "liked"
-                break; // Salir del bucle interno
-                }
-            }
-            // Asignar el valor de $isLiked al objeto $man
-            $woman->isLiked = $isLiked;
-        }
-
-        return view('clothes.womenClothes', compact('womenClothes', 'amount'));
+        return view('clothes.clothes', compact('clothes', 'amount'));
     }
 
     public function view($id)

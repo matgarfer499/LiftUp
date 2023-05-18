@@ -8,7 +8,7 @@
   <!-- Importamos tailwind y js-->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
   <script>
-    var isAuthenticated = {{ auth()->check() ? 'true' : 'false' }};
+    let isAuthenticated = {{ auth()->check() ? 'true' : 'false' }};
   </script>
   <title>@yield('title')</title>
   @vite('resources/css/app.css')
@@ -77,8 +77,8 @@
       </svg>
 
       <div class="w-3/12 sm:flex justify-center hidden">
-        <a href="{{route('menclothes.index')}}" class="font-semibold text-sm mr-4 cursor-pointer">HOMBRE</a>
-        <a href="{{route('womenclothes.index')}}" class="font-semibold text-sm mr-4 cursor-pointer">MUJER</a>
+        <a href="{{route('clothes.index', ['gender' => 'H'])}}" class="font-semibold text-sm mr-4 cursor-pointer">HOMBRE</a>
+        <a href="{{route('clothes.index', ['gender' => 'M'])}}" class="font-semibold text-sm mr-4 cursor-pointer">MUJER</a>
       </div>
       <div class="w-3/12 flex justify-center">
         <div class="w-6/12 flex flex-wrap justify-evenly">
