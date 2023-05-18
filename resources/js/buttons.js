@@ -7,13 +7,14 @@ $('#displayBtn').click(changeDisplay)
 let position = 'initial'
 
 function changeDisplay(){
+    let btnWidth = $('#displayBtn').width()
     let layout = $('#layout')
     let clothesDiv = $('.clothesDiv')
     let clothesImg = $('.clothesImg')
 
 
     if (position === 'initial'){
-        layout.animate({left: '96px'}, 500)
+        layout.animate({left: btnWidth/1.8+'px'}, 500)
         position = 'moved'
 
         //Cambio de clases
@@ -27,7 +28,7 @@ function changeDisplay(){
             $(this).addClass('h-[250px]')
         })
     }else{
-        layout.animate({left: '23px'}, 500)
+        layout.animate({left: '8px'}, 500)
         position = 'initial'
 
         //Cambio de clases
