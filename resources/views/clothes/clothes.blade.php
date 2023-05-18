@@ -12,9 +12,9 @@
     </div>
 </div>
 <div class="w-full flex justify-center">
-    <div class="w-11/12 relative flex flex-wrap sm:justify-end justify-between mb-4">
-        <div class="w-16 h-8 absolute top-1 left-2 bg-white border-2 border-gray-300 rounded-full opacity-40 sm:hidden" id="layout"></div>
-        <button class="w-40 h-10 border-2 border-gray-300 bg-gray-100 rounded-full flex justify-around items-center sm:hidden" id="displayBtn">
+    <div class="w-11/12 relative flex flex-wrap btnHide:justify-end justify-between mb-4">
+        <div class="w-16 h-8 absolute top-1 left-2 bg-white border-2 border-gray-300 rounded-full opacity-40 btnHide:hidden" id="layout"></div>
+        <button class="w-40 h-10 border-2 border-gray-300 bg-gray-100 rounded-full flex justify-around items-center btnHide:hidden" id="displayBtn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z" />
             </svg>
@@ -33,10 +33,10 @@
     </div>
 </div>
 <div class="w-full flex justify-center">
-    <div class="w-11/12 grid grid-cols-auto-fit-minmax gap-4">
+    <div id="clothesContainer" class="w-11/12 grid grid-cols-auto-fit-minmax gap-4">
         @foreach($clothes as $clothe)
         @if($clothe->images->first()?->url)
-        <div class="clothesDiv group relative w-full mb-10">
+        <div class="group relative w-full mb-10">
             <button data-clo="{{$clothe->id}}" class="likeBtn w-[30px] h-[30px] bg-white/40 shadow-sm shadow-[#676767] rounded-full absolute right-2 top-2 backdrop-blur-md group-hover:opacity-90 opacity-0 duration-500 ease-in-out flex justify-center items-center">
                 @if($clothe->isLiked)
                     <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[20px] h-[20px]">
@@ -49,7 +49,7 @@
                 @endif
             </button>
             <a href="{{route('images.see', ['id' => $clothe->id])}}">
-                <img src="{{$clothe->images->first()?->url}}" class="clothesImg w-full 2xl:h-[350px] cursor-pointer hover:border-2 hover:border-gray-400 object-cover" alt>
+                <img src="{{$clothe->images->first()?->url}}" class="w-full 2xl:h-[350px] cursor-pointer hover:border-2 hover:border-gray-400 object-cover" alt>
             </a>
             <div class="w-full flex flex-wrap">
                 <div class="w-full flex justify-between items-center">

@@ -19,6 +19,9 @@ module.exports = {
             gridTemplateColumns: {
                 'auto-fit-minmax': 'repeat(auto-fit, minmax(250px, 1fr))',
             },
+            screens: {
+                'btnHide': '563px',
+            },
         },
     },
 

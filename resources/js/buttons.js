@@ -5,43 +5,42 @@
 $('#displayBtn').click(changeDisplay)
 
 let position = 'initial'
+let clothesContainer = $('#clothesContainer')
+let layout = $('#layout')
 
 function changeDisplay(){
     let btnWidth = $('#displayBtn').width()
-    let layout = $('#layout')
-    let clothesDiv = $('.clothesDiv')
-    let clothesImg = $('.clothesImg')
-
 
     if (position === 'initial'){
         layout.animate({left: btnWidth/1.8+'px'}, 500)
         position = 'moved'
 
         //Cambio de clases
-        clothesDiv.each(function(){
-            $(this).removeClass('w-full')
-            $(this).addClass('w-5/12')
-        })
-        
-        clothesImg.each(function() {
-            $(this).removeClass('h-full')
-            $(this).addClass('h-[250px]')
-        })
+        clothesContainer.removeClass('grid-cols-auto-fit-minmax')
+        clothesContainer.addClass('grid-cols-2')
     }else{
-        layout.animate({left: '8px'}, 500)
-        position = 'initial'
+        backToPosition()
 
         //Cambio de clases
-        clothesDiv.each(function(){
-            $(this).removeClass('w-5/12')
-            $(this).addClass('w-full')
-        })
-
-        clothesImg.each(function() {
-            $(this).removeClass('h-[250px]')
-            $(this).addClass('h-full')
-        })
+        clothesContainer.removeClass('grid-cols-2')
+        clothesContainer.addClass('grid-cols-auto-fit-minmax')
     }
+
+}
+//Si la pantalla es mayor a 600px y el grid sigue en 2 columnas, volvemos a ponerlo en auto
+$(window).resize(function(){
+    if($(window).width() > 600 && clothesContainer.hasClass('grid-cols-2')){
+        clothesContainer.addClass('grid-cols-auto-fit-minmax')
+        clothesContainer.removeClass('grid-cols-2')
+
+        backToPosition()
+    }
+})
+
+//funcion para hacer que el layout vuelva a su posicion inical
+function backToPosition(){
+    layout.animate({left: '8px'}, 500)
+    position = 'initial'
 }
 
 let likeBtn = $(".likeBtn");
