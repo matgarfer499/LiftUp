@@ -53,15 +53,15 @@
             </a>
             <div class="w-full flex flex-wrap">
                 <div class="w-full flex justify-between items-center">
-                    <span class="text-sm">{{$clothe->name}}</span>
+                    <span class="text-xs font-semibold uppercase">{{$clothe->name}}</span>
                     @if($clothe->discount == 0)
-                    <span class="text-xs">{{$clothe->price}} EUR</span>
+                    <span class="text-sm font-bold">{{$clothe->price}}€</span>
                 </div>
                 @else
-                <span class="line-through text-xs">{{$clothe->price}} EUR</span>
-            </div>
-            <div class="w-full flex justify-end">
-                <span class="bg-black text-white text-xs tracking-wider">-{{$clothe->discount_rate}}% {{round($clothe->price - ($clothe->price * $clothe->discount_rate/100),2)}} EUR</span>
+                <div>
+                    <span class="line-through text-xs">{{$clothe->price}}€</span>
+                    <span class="text-red-500 font-bold text-sm tracking-wider">{{round($clothe->price - ($clothe->price * $clothe->discount_rate/100),2)}}€</span>
+                </div>
             </div>
 
             @endif

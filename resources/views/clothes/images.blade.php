@@ -24,9 +24,9 @@
         <div class="w-full flex justify-between items-center">
             <span class="text-3xl font-semibold uppercase">{{$images[0]->name}}</span>
             @if($images[0]->discount == 1)
-            <span class="text-red-600 text-xl float-right mt-[12px]">-{{$images[0]->discount_rate}}% | {{round($images[0]->price - ($images[0]->price * $images[0]->discount_rate/100),2)}} EUR</span>
+            <span class="text-red-600 text-2xl float-right mt-[12px]">-{{$images[0]->discount_rate}}% | {{round($images[0]->price - ($images[0]->price * $images[0]->discount_rate/100),2)}}€</span>
             @else
-            <span class="text-xl font-semibold float-right leading-10 mt-[5px]">{{$images[0]->price}} EUR</span>
+            <span class="text-2xl font-semibold float-right leading-10 mt-[5px]">{{$images[0]->price}}€</span>
             @endif
         </div>
         <br>
