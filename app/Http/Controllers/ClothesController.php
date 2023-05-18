@@ -27,7 +27,13 @@ class ClothesController extends Controller
             $clothe->isLiked = $isLiked;
         }
 
-        return view('clothes.clothes', compact('clothes', 'amount'));
+        if($gender === 'H'){
+            $gender = "Hombre";
+        }else{
+            $gender = "Mujer";
+        }
+
+        return view('clothes.clothes', compact('clothes', 'amount', 'gender'));
     }
 
     public function view($id)

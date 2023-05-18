@@ -1,11 +1,13 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Moda hombre')
+@section('title', $gender)
 
 @section('content')
 <div class="w-full flex justify-center">
     <div class="w-11/12 flex flex-wrap justify-between">
-        <div class="w-full font-normal text-sm text-[#9f9fa0] ml-2">Hombre</div>
+        <div class="w-full font-normal text-sm text-[#9f9fa0] ml-2">
+            {{$gender}}
+        </div>
         <div class="w-full font-bold text-lg ml-2">TODOS LOS PRODUCTOS <span class="font-normal text-xs text-[#9f9fa0]">{{$amount}} productos</span></div>
     </div>
 </div>
@@ -31,10 +33,10 @@
     </div>
 </div>
 <div class="w-full flex justify-center">
-    <div class="w-11/12 flex flex-wrap justify-between">
+    <div class="w-11/12 grid grid-cols-auto-fit-minmax gap-4">
         @foreach($clothes as $clothe)
         @if($clothe->images->first()?->url)
-        <div class="clothesDiv group relative 2xl:w-2/12 xl:w-[250px] lg:w-[300px] sm:w-[300px] w-full mx-2 mb-10">
+        <div class="clothesDiv group relative w-full mb-10">
             <button data-clo="{{$clothe->id}}" class="likeBtn w-[30px] h-[30px] bg-white/40 shadow-sm shadow-[#676767] rounded-full absolute right-2 top-2 backdrop-blur-md group-hover:opacity-90 opacity-0 duration-500 ease-in-out flex justify-center items-center">
                 @if($clothe->isLiked)
                     <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[20px] h-[20px]">
