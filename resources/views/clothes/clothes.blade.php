@@ -2,6 +2,11 @@
 
 @section('title', $gender)
 
+@section('scripts')
+@parent
+@vite('resources/js/buttons.js')
+@endsection
+
 @section('content')
 <div class="w-full flex justify-center">
     <div class="w-11/12 flex flex-wrap justify-between">

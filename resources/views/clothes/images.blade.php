@@ -2,6 +2,12 @@
 
 @section('title', '' .$images[0]->name)
 
+
+@section('scripts')
+@parent
+@vite('resources/js/images.js')
+@endsection
+
 @section('content')
 <div class="w-full flex flex-wrap">
     <div class="w-6/12">

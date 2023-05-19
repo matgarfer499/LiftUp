@@ -2,6 +2,11 @@
 
 @section('title', 'wishlist')
 
+@section('scripts')
+@parent
+@vite('resources/js/buttons.js')
+@endsection
+
 @section('content')
 <div class="w-screen flex justify-center">
     <div class="w-11/12 flex flex-wrap justify-between">

@@ -10,6 +10,6 @@
 <body>
     Esta la landing
     <br>
-    <a href="{{route('menclothes.index')}}">Ir a ver las ropas</a>
+    <a href="{{route('clothes.index', ['gender' => 'H'])}}">Ir a ver las ropas</a>
 </body>
 </html>
