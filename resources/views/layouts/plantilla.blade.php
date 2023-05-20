@@ -76,8 +76,8 @@
       </svg>
 
       <div class="w-3/12 sm:flex justify-center hidden">
-        <a href="{{route('clothes.index', ['gender' => 'H'])}}" class="font-semibold text-sm mr-4 cursor-pointer">HOMBRE</a>
-        <a href="{{route('clothes.index', ['gender' => 'M'])}}" class="font-semibold text-sm mr-4 cursor-pointer">MUJER</a>
+        <a href="{{route('clothes.index', ['gender' => 'H'])}}" class="font-semibold text-sm mr-4 cursor-pointer hover:text-red-500">HOMBRE</a>
+        <a href="{{route('clothes.index', ['gender' => 'M'])}}" class="font-semibold text-sm mr-4 cursor-pointer hover:text-red-500">MUJER</a>
       </div>
       <div class="w-3/12 flex justify-center">
         <div class="w-6/12 flex flex-wrap justify-evenly">

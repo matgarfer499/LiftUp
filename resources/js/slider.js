@@ -4,8 +4,7 @@ let filterBtn = $('#filterSortBtn')
 let filterDiv = $('#filterSortDiv')
 let backgroundBlur = $('#backgroundBlur')
 
-filterBtn.click(function () { 
-    filterDiv.removeClass('hidden')
+filterBtn.click(function () {
     backgroundBlur.removeClass('hidden')
 
     filterDiv.animate({
@@ -19,8 +18,10 @@ $('#closeFiltersBtn').click(closeFilters)
 
 //funcion para cerrar el div de los filtros
 function closeFilters(){
-    filterDiv.addClass('hidden')
-    backgroundBlur.addClass('hidden')
+    backgroundBlur.delay(400).queue(function(next){
+        $(this).addClass('hidden')
+        next()
+    })
     filterDiv.animate({
         left: '2000px'
     }, 500)
