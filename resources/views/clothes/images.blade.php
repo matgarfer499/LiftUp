@@ -42,7 +42,15 @@
                 <span class="p-1 font-bold text-xl">
                     COMPOSIÓN Y MATERIALES
                 </span> 
-                <span class="font-bold text-2xl" id="moreLess">+</span>
+                <span class="font-bold flex justify-center items-center" id="moreLess">
+                    <svg id="more" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="svg w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                    <svg id="less" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="svg w-6 h-6 hidden">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                    </svg>
+
+                </span>
             </summary>
             <p class="text-[#4B4949] text-justify w-11/12 p-2">{{$images[0]->material}}</p>
         </details>

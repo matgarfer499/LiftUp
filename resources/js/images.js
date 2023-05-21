@@ -3,11 +3,7 @@
 //Cambiar el + por un - y viceversa al desplegar los materiales de la ropa
 
 materialsDisplay.addEventListener("click", function(){
-    if(moreLess.textContent == "+"){
-        moreLess.textContent = "-";
-    } else {
-        moreLess.textContent = "+";
-    }
+    $("#moreLess svg").toggleClass('hidden');
 });
 
 //Seleccionar imagenes y que se desplacen a la imagen seleccionada
