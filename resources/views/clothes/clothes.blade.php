@@ -40,9 +40,9 @@
 </div>
 <div id="backgroundBlur" class="w-screen h-screen bg-black/90 backdrop-blur-sm fixed top-0 z-40 hidden">
 </div>
-<div id="filterSortDiv" class="fixed z-50 h-screen w-2/6 bg-white top-0 -right-2/4">
-    <div class="w-full flex justify-between items-center h-[50px]">
-        <div id="closeFiltersBtn" class="w-1/4 flex justify-center cursor-pointer">
+<div id="filterSortDiv" class="fixed z-50 h-screen w-1/4 bg-white top-0 -right-2/4">
+    <div class="w-11/12 flex justify-between items-center h-[50px] m-auto">
+        <div id="closeFiltersBtn" class="w-1/4 flex cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -50,6 +50,45 @@
         <span class="font-semibold text-sm w-2/5 flex justify-center">FILTRAR Y ORDENAR</span>
         <span class="font-medium text-xs text-gray-400 w-1/4 flex justify-center">QUITAR FILTROS</span>
     </div>
+    <div class="w-11/12 h-20 border-b-2 border-gray-300 m-auto flex justify-between items-center">
+        <span class="font-bold">ORDENAR POR</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+    </div>
+    <div class="w-11/12 h-20 border-b-2 border-gray-300 m-auto flex justify-between items-center">
+        <span class="font-bold">TIPO DE PRODUCTO</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+    </div>
+    <div class="w-11/12 h-20 border-b-2 border-gray-300 m-auto flex justify-between items-center">
+        <span class="font-bold">TALLA</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+    </div>
+    <div class="w-11/12 h-20 border-b-2 border-gray-300 m-auto flex justify-between items-center">
+        <span class="font-bold">COLOR</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+    </div>
+    <div class="w-11/12 h-20 border-b-2 border-gray-300 m-auto flex justify-between items-center">
+        <span class="font-bold">DESCUENTO</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+    </div>
+    <div class="w-11/12 h-20 border-b-2 border-gray-300 m-auto flex justify-between items-center">
+        <span class="font-bold">PRECIO</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+    </div>
+    <button class="w-11/12 m-auto mt-10 p-1 flex justify-center items-center bg-black text-white text-lg font-semibold rounded-full">
+        VER PRODUCTOS
+    </button>
 </div>
 <div class="w-full flex justify-center">
     <div id="clothesContainer" class="w-11/12 grid grid-cols-auto-fit-minmax gap-4">

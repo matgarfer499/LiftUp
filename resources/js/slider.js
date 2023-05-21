@@ -8,7 +8,7 @@ filterBtn.click(function () {
     backgroundBlur.removeClass('hidden')
 
     filterDiv.animate({
-        left: $(window).width()/1.5+'px'
+        left: $(window).width()/1.33+'px'
     }, 500)
 });
 
