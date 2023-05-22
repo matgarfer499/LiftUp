@@ -48,7 +48,6 @@ let likeBtn = $(".likeBtn");
 function changeHeartColor(btn){
     let svg = btn.children("svg");
     let fill = svg.attr("fill");
-    console.log(svg, fill);
     if(fill == "black"){
         svg.attr("fill", "none");
     }else{
