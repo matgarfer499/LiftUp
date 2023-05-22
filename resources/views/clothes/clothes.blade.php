@@ -40,7 +40,7 @@
 </div>
 <div id="backgroundBlur" class="w-screen h-screen bg-black/90 backdrop-blur-sm fixed top-0 z-40 hidden">
 </div>
-<div id="filterSortDiv" class="fixed z-50 h-screen w-1/4 bg-white top-0 -right-2/4">
+<div id="filterSortDiv" class="fixed z-50 h-screen max-h-screen w-1/4 bg-white top-0 -right-2/4 overflow-auto scrollbar-x-hidden">
     <div class="w-11/12 flex justify-between items-center h-[50px] m-auto">
         <div id="closeFiltersBtn" class="w-1/4 flex cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -50,42 +50,91 @@
         <span class="font-semibold text-sm w-2/5 flex justify-center">FILTRAR Y ORDENAR</span>
         <span class="font-medium text-xs text-gray-400 w-1/4 flex justify-center">QUITAR FILTROS</span>
     </div>
-    <div class="w-11/12 h-20 border-b-2 border-gray-300 m-auto flex justify-between items-center">
-        <span class="font-bold">ORDENAR POR</span>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-        </svg>
-    </div>
-    <div class="w-11/12 h-20 border-b-2 border-gray-300 m-auto flex justify-between items-center">
-        <span class="font-bold">TIPO DE PRODUCTO</span>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-        </svg>
-    </div>
-    <div class="w-11/12 h-20 border-b-2 border-gray-300 m-auto flex justify-between items-center">
-        <span class="font-bold">TALLA</span>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-        </svg>
-    </div>
-    <div class="w-11/12 h-20 border-b-2 border-gray-300 m-auto flex justify-between items-center">
-        <span class="font-bold">COLOR</span>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-        </svg>
-    </div>
-    <div class="w-11/12 h-20 border-b-2 border-gray-300 m-auto flex justify-between items-center">
-        <span class="font-bold">DESCUENTO</span>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-        </svg>
-    </div>
-    <div class="w-11/12 h-20 border-b-2 border-gray-300 m-auto flex justify-between items-center">
-        <span class="font-bold">PRECIO</span>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-        </svg>
-    </div>
+    <details class="w-11/12 py-6 border-b-2 border-gray-300 m-auto cursor-pointer">
+        <summary class="flex justify-between items-center h-full">
+            <span class="font-bold">ORDENAR POR</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </summary>
+        <div class="py-2">
+            <input type="radio" name="lowHigh" value="low" id="low" class="checked:ring-black p-3">
+            <label for="low">De menor a mayor</label>
+        </div>
+        <div class="py-2">
+            <input type="radio" name="lowHigh" value="high" class="checked:ring-black p-3">
+            <label for="high">De mayor a menor</label>
+        </div>
+    </details>
+    <details class="w-11/12 py-6 border-b-2 border-gray-300 m-auto cursor-pointer">
+        <summary class="flex justify-between items-center h-full">
+            <span class="font-bold">TIPO DE PRODUCTO</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </summary>
+        <div class="w-full grid grid-cols-2 gap-1">
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Camisetas</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Sudaderas</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Pantalones</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Shorts</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Tanks</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Tirantes</div>
+        </div>
+    </details>
+    <details class="w-11/12 cursor-pointer py-6 border-b-2 border-gray-300 m-auto">
+        <summary class="flex justify-between items-center h-full">
+            <span class="font-bold">TALLA</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </summary>
+        <div class="w-full grid grid-cols-4 gap-1">
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">XS</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">S</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">M</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">L</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">XL</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">2XL</div>
+        </div>
+    </details>
+    <details class="w-11/12 cursor-pointer py-6 border-b-2 border-gray-300 m-auto">
+        <summary class="flex justify-between items-center h-full">
+            <span class="font-bold">COLOR</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </summary>
+    </details>
+    <details class="w-11/12 cursor-pointer py-6 border-b-2 border-gray-300 m-auto">
+        <summary class="flex justify-between items-center h-full">
+            <span class="font-bold">DESCUENTO</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </summary>
+        <div class="w-full grid grid-cols-2 gap-1">
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">10%</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">20%</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">40%</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">50%</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">75%</div>
+        </div>
+    </details>
+    <details class="w-11/12 cursor-pointer py-6 border-b-2 border-gray-300 m-auto">
+        <summary class="flex justify-between items-center h-full">
+            <span class="font-bold">PRECIO</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </summary>
+        <div class="w-full grid grid-cols-2 gap-1">
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">10€ - 20€</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">20€ - 30€</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">30€ - 50€</div>
+            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">50€ - 100€</div>
+        </div>
+    </details>
     <button class="w-11/12 m-auto mt-10 p-1 flex justify-center items-center bg-black text-white text-lg font-semibold rounded-full">
         VER PRODUCTOS
     </button>

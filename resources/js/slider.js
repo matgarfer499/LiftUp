@@ -6,7 +6,7 @@ let backgroundBlur = $('#backgroundBlur')
 
 filterBtn.click(function () {
     backgroundBlur.removeClass('hidden')
-
+    $('body').css('overflow', 'hidden')
     filterDiv.animate({
         left: $(window).width()/1.33+'px'
     }, 500)
@@ -25,4 +25,5 @@ function closeFilters(){
     filterDiv.animate({
         left: '2000px'
     }, 500)
+    $('body').css('overflow', 'visible')
 }
