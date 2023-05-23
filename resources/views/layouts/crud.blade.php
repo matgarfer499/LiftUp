@@ -13,7 +13,7 @@
 
 <body class="bg-gray-200 m-0">
     <div class="fixed h-screen w-2/12 border-r-2 border-white bg-gray-900">
-        <a href="{{route('menclothes.index')}}" class="flex flex-wrap justify-start items-center border-b-2 border-white bg-gray-900 pb-4">
+        <a href="{{route('clothes.index', ['gender' => 'H'])}}" class="flex flex-wrap justify-start items-center border-b-2 border-white bg-gray-900 pb-4">
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-3/12 h-24 scale-[3]" viewBox="0 0 1200.000000 900.000000" preserveAspectRatio="xMidYMid meet">
                 <g transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)" fill="white" stroke="none">
                     <path d="M5795 6690 c-289 -33 -548 -120 -755 -255 -105 -68 -282 -249 -347

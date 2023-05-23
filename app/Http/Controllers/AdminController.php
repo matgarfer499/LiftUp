@@ -80,7 +80,7 @@ class AdminController extends Controller
     public function images()
     {
         $images = Clothe::with('images')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
-                'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material')->paginate(5);
+                'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material', 'clothes.created_at', 'clothes.updated_at')->paginate(5);
 
         return view('admin.imagesControl', compact('images'));
     }
