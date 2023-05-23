@@ -9,8 +9,6 @@ class Clothe extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $fillable = [
         'type_product',
         'name',

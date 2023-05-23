@@ -6,6 +6,7 @@
 @parent
 @vite('resources/js/buttons.js')
 @vite('resources/js/slider.js')
+@vite('resources/js/filterSort.js')
 @endsection
 
 @section('content')
@@ -58,12 +59,20 @@
             </svg>
         </summary>
         <div class="py-2">
-            <input type="radio" name="lowHigh" value="low" id="low" class="checked:ring-black p-3">
-            <label for="low">De menor a mayor</label>
+            <input type="radio" name="sort" value="asc" class="sort checked:ring-black p-3">
+            <label for="low">De mas barato a mas caro</label>
         </div>
         <div class="py-2">
-            <input type="radio" name="lowHigh" value="high" class="checked:ring-black p-3">
-            <label for="high">De mayor a menor</label>
+            <input type="radio" name="sort" value="desc" class="sort checked:ring-black p-3">
+            <label for="high">De mas caro a mas barato</label>
+        </div>
+        <div class="py-2">
+            <input type="radio" name="sort" value="default" class="sort checked:ring-black p-3">
+            <label for="high">Relevancia</label>
+        </div>
+        <div class="py-2">
+            <input type="radio" name="sort" value="new" class="sort checked:ring-black p-3">
+            <label for="high">Nuevos</label>
         </div>
     </details>
     <details class="w-11/12 py-6 border-b-2 border-gray-300 m-auto cursor-pointer">
@@ -135,7 +144,7 @@
             <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">50€ - 100€</div>
         </div>
     </details>
-    <button class="w-11/12 m-auto mt-10 p-1 flex justify-center items-center bg-black text-white text-lg font-semibold rounded-full">
+    <button id="filterBtn" value="{{$gender}}" class="w-11/12 m-auto mt-10 p-1 flex justify-center items-center bg-black text-white text-lg font-semibold rounded-full">
         VER PRODUCTOS
     </button>
 </div>

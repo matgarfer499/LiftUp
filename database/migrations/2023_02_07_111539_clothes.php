@@ -24,6 +24,7 @@ return new class extends Migration
             $table->float('price', 5, 2);
             $table->text('description');
             $table->text('material');
+            $table->timestamps();
         });
     }
 

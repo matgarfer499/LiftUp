@@ -27,6 +27,8 @@ Route::get('/', function () {
 });
 //ver ropas
 Route::get('/clothes/{gender}', [ClothesController::class, 'clothes'])->name('clothes.index');
+//Filtrado y ordenamiento
+Route::get('/filter/{gender}/{sort}', [ClothesController::class, 'sortFilter'])->name('sortFilter.index');
 //ver ropa especifica al clickar en la imagen
 Route::get('/clothing/{id}', [ClothesController::class, 'view'])->name('images.see');
 //Ver ropa marcada como "me gusta"
