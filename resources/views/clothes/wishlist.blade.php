@@ -4,7 +4,8 @@
 
 @section('scripts')
 @parent
-@vite('resources/js/buttons.js')
+@vite('resources/js/displayMobile.js')
+<script src="{{asset('js/wishlist.js')}}"></script>
 @endsection
 
 @section('content')
@@ -39,7 +40,7 @@
         @foreach($liked[0]->wishlist as $wish)
         @if($wish->images->first()?->url)
         <div class="clothesDiv group relative w-full mb-10">
-            <button data-clo="{{$wish->id}}" class="likeBtn w-[30px] h-[30px] bg-white/40 shadow-sm shadow-[#676767] rounded-full absolute right-2 top-2 backdrop-blur-md group-hover:opacity-90 opacity-0 duration-500 ease-in-out flex justify-center items-center">
+            <button onclick="addToWishlist({{$wish->id}}, this)" class="likeBtn w-[30px] h-[30px] bg-white/40 shadow-sm shadow-[#676767] rounded-full absolute right-2 top-2 backdrop-blur-md group-hover:opacity-90 opacity-0 duration-500 ease-in-out flex justify-center items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[20px] h-[20px]">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                 </svg>

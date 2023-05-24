@@ -11,10 +11,10 @@
     let isAuthenticated = {{ auth()->check() ? 'true' : 'false' }};
   </script>
   <title>@yield('title')</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   @yield('scripts')
   @vite('resources/css/app.css')
   @vite('resources/css/homePage.css')
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="bg-white m-0">
