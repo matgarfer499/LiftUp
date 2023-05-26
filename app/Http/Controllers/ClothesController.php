@@ -53,23 +53,17 @@ class ClothesController extends Controller
     public function sortFilter(Request $request, $gender){
         $sort = $request->input('sort');
 
-        switch($sort){
-            case "asc":
-                $clothes = Clothe::where('gender', $gender)->with('images')->with('wishlist')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
-                'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material', 'clothes.created_at', 'clothes.updated_at')->orderBy('clothes.price', $sort)->get();
-                break;
-            case "desc":
-                $clothes = Clothe::where('gender', $gender)->with('images')->with('wishlist')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
-                'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material', 'clothes.created_at', 'clothes.updated_at')->orderBy('clothes.price', $sort)->get();
-                break;
-            case "new":
-                $clothes = Clothe::where('gender', $gender)->with('images')->with('wishlist')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
-                'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material', 'clothes.created_at', 'clothes.updated_at')->latest('created_at')->get();
-                break;
-            default:
+        if($sort == "asc" || $sort == "desc"){
+            $clothes = Clothe::where('gender', $gender)->with('images')->with('wishlist')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
+            'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material', 'clothes.created_at', 'clothes.updated_at')->orderBy('clothes.price', $sort)->get();
+        } else if ($sort == "new"){
+            $clothes = Clothe::where('gender', $gender)->with('images')->with('wishlist')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
+            'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material', 'clothes.created_at', 'clothes.updated_at')->latest('created_at')->get();
+        }else{
             $clothes = Clothe::where('gender', $gender)->with('images')->with('wishlist')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
             'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material', 'clothes.created_at', 'clothes.updated_at')->get();
         }
+        
         
         foreach ($clothes as $clothe) {
             $isLiked = false; // Valor predeterminado

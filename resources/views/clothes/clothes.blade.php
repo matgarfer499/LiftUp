@@ -51,7 +51,7 @@
             </svg>
         </div>
         <span class="font-semibold text-sm w-2/5 flex justify-center">FILTRAR Y ORDENAR</span>
-        <span class="font-medium text-xs text-gray-400 w-1/4 flex justify-center">QUITAR FILTROS</span>
+        <span class="font-medium text-[10px] text-gray-400 w-1/4 flex justify-end">QUITAR FILTROS</span>
     </div>
     <details class="w-11/12 py-6 border-b-2 border-gray-300 m-auto cursor-pointer">
         <summary class="flex justify-between items-center h-full">
@@ -69,7 +69,7 @@
             <label for="high">De mas caro a mas barato</label>
         </div>
         <div class="py-2">
-            <input type="radio" name="sort" value="default" class="sort checked:ring-black p-3">
+            <input type="radio" name="sort" value="default" class="sort checked:ring-black p-3" checked>
             <label for="high">Relevancia</label>
         </div>
         <div class="py-2">
@@ -85,12 +85,30 @@
             </svg>
         </summary>
         <div class="w-full grid grid-cols-2 gap-1">
-            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Camisetas</div>
-            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Sudaderas</div>
-            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Pantalones</div>
-            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Shorts</div>
-            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Tanks</div>
-            <div class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Tirantes</div>
+            <div class="checkbox relative">
+                <input type="checkbox" id="shirts" class="noChecked opacity-0 absolute checked:bg-black">
+                <label for="shirts" class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Camisetas</label>
+            </div>
+            <div class="checkbox relative">
+                <input type="checkbox" id="hoodies" class="noChecked opacity-0 absolute checked:bg-black">
+                <label for="hoodies" class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Sudaderas</label>
+            </div>
+            <div class="checkbox relative">
+                <input type="checkbox" id="bottoms" class="noChecked opacity-0 absolute checked:bg-black">
+                <label for="bottoms" class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Pantalones</label>
+            </div>
+            <div class="checkbox relative">
+                <input type="checkbox" id="shorts" class="noChecked opacity-0 absolute checked:bg-black">
+                <label for="shorts" class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Shorts</label>
+            </div>
+            <div class="checkbox relative">
+                <input type="checkbox" id="tanks" class="noChecked opacity-0 absolute checked:bg-black">
+                <label for="tanks" class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Tanks</label>
+            </div>
+            <div class="checkbox relative">
+                <input type="checkbox" id="tirantes" class="noChecked opacity-0 absolute checked:bg-black">
+                <label for="tirantes" class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Tirantes</label>
+            </div>
         </div>
     </details>
     <details class="w-11/12 cursor-pointer py-6 border-b-2 border-gray-300 m-auto">
