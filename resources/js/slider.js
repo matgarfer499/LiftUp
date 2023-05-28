@@ -17,7 +17,7 @@ backgroundBlur.click(closeFilters)
 $('#closeFiltersBtn').click(closeFilters)
 
 //funcion para cerrar el div de los filtros
-function closeFilters(){
+export function closeFilters(){
     backgroundBlur.delay(400).queue(function(next){
         $(this).addClass('hidden')
         next()

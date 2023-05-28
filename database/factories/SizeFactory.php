@@ -18,7 +18,7 @@ class SizeFactory extends Factory
     public function definition()
     {
         return [
-            'size' => fake()->regexify('[0-3]{1}[A-Z]{2}'),
+            'size' => fake()->randomElement(['XS', 'S', 'M', 'L', 'XL', '2XL']),
         ];
     }
 }

@@ -1,10 +1,8 @@
 let likeBtn = $(".likeBtn");
 //Cambiar el color del corazon al usuario cuando da like a una ropa o lo quita
 function changeHeartColor(btn) {
-    console.log(btn.children[0]);
     let svg = btn.children[0];
     let fill = svg.getAttribute("fill");
-    console.log(fill);
     if (fill == "black") {
         svg.setAttribute("fill", "none");
     } else {
