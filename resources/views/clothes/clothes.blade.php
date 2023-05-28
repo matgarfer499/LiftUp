@@ -88,11 +88,11 @@
         </summary>
         <div class="w-full grid grid-cols-2 gap-1">
             <div class="checkbox relative">
-                <input name="typeProduct" type="checkbox" id="shirts" value="camiseta" class="noChecked pointer-events-none pointer-events-none bottom-0 right-0 opacity-0 absolute checked:bg-black">
+                <input name="typeProduct" type="checkbox" id="shirts" value="camiseta" class="noChecked pointer-events-none bottom-0 right-0 opacity-0 absolute checked:bg-black">
                 <label for="shirts" class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Camisetas</label>
             </div>
             <div class="checkbox relative">
-                <input name="typeProduct" type="checkbox" id="hoodies" value="sudadera" class="noChecked pointer-events-none pointer-events-none bottom-0 right-0 opacity-0 absolute checked:bg-black">
+                <input name="typeProduct" type="checkbox" id="hoodies" value="sudadera" class="noChecked pointer-events-none bottom-0 right-0 opacity-0 absolute checked:bg-black">
                 <label for="hoodies" class="flex justify-center items-center py-2 w-full border-2 border-gray-400 my-1">Sudaderas</label>
             </div>
             <div class="checkbox relative">
@@ -157,7 +157,7 @@
         <div class="w-full grid grid-cols-3 mb-2">
             @foreach($colors as $color)
             <div class="colorCheckbox w-1/3 m-auto relative">
-                <input name="color" type="checkbox" id="{{$color->color}}" value="{{$color->color}}" class="noChecked bottom-0 right-0 opacity-0 absolute pointer-events-none">
+                <input name="color" type="checkbox" id="{{$color->color}}" value="{{$color->color}}" class="noChecked bottom-0 right-0 absolute pointer-events-none">
                 <div class="w-12 h-12 rounded-full border-black/50 border-2 m-2 relative" style="background-color:#{{$color->color}}">
                     <label for="{{$color->color}}" class="w-full h-full absolute"></label>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hidden pointer-events-none absolute top-2 left-2">
