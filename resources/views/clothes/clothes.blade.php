@@ -53,7 +53,7 @@
             </svg>
         </div>
         <span class="font-semibold text-sm w-2/5 flex justify-center">FILTRAR Y ORDENAR</span>
-        <span class="font-medium text-[10px] text-gray-400 w-1/4 flex justify-end">QUITAR FILTROS</span>
+        <button value="{{$gender}}" id="removeFilters" class="font-medium text-[10px] text-gray-400 w-1/4 flex justify-end">QUITAR FILTROS</button>
     </div>
     <details class="w-11/12 py-6 border-b-2 border-gray-300 m-auto cursor-pointer">
         <summary class="flex justify-between items-center h-full">

@@ -1,5 +1,5 @@
 "use strict";
-import { closeFilters } from './slider.js';
+import { closeFilters } from "./slider.js";
 
 $(".checkbox").each(function () {
     let input = $(this).find("input").eq(0);
@@ -36,14 +36,14 @@ let maxPrice = document.getElementById("max-price");
 let slider = document.getElementById("slider");
 noUiSlider.create(slider, {
     start: [0, 100],
-    connect: true, 
+    connect: true,
     range: {
-        min: 0, 
-        max: 100, 
+        min: 0,
+        max: 100,
     },
     format: {
         to: function (value) {
-            return Math.round(value); 
+            return Math.round(value);
         },
         from: function (value) {
             return parseInt(value);
@@ -54,11 +54,65 @@ noUiSlider.create(slider, {
 //Actualiza los valores de los precios mínimo y máximo cuando cambia el slider
 slider.noUiSlider.on("update", function (values, handle) {
     if (handle === 0) {
-        minPrice.textContent = values[0]+"€";
+        minPrice.textContent = values[0] + "€";
     }
     if (handle === 1) {
-        maxPrice.textContent = values[1]+"€";
+        maxPrice.textContent = values[1] + "€";
     }
+});
+
+let token = $('meta[name="csrf-token"]').attr("content");
+$("#removeFilters").click(function () {
+    let sort = "default";
+    let typeProduct = [];
+    let sizes = [];
+    let discount = [];
+    let price = [];
+    let color = [];
+
+    let gender = $(this).attr("value").charAt(0);
+    $.ajax({
+        url: "/filter/" + gender + "/" + sort,
+        type: "GET",
+        headers: {
+            "X-CSRF-TOKEN": token, // Agregar el token CSRF como un encabezado personalizado
+        },
+        data: {
+            sort: sort,
+            typeProduct: typeProduct,
+            sizes: sizes,
+            discount: discount,
+            price: price,
+            color: color,
+            minPrice: 0,
+            maxPrice: 100,
+        },
+        success: function (response) {
+            $("#clothesContainer").html(response);
+            closeFilters();
+            $(".checkbox").prop("checked", false);
+            $(".checkbox").each(function () {
+                let input = $(this).find("input").eq(0);
+                let label = $(this).find("label").eq(0);
+                if (!input.hasClass("noChecked")) {
+                    label.removeClass(["bg-black", "text-white"]);
+                    input.addClass("noChecked");
+                }
+            });
+            $(".colorCheckbox").each(function () {
+                let input = $(this).find("input").eq(0);
+                let svg = $(this).find("svg").eq(0);
+                let label = $(this).find("label").eq(0);
+                if (!input.hasClass("noChecked")) {   
+                    svg.addClass("hidden");
+                    input.addClass("noChecked");
+                }
+            });
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.responseText);
+        },
+    });
 });
 
 $("#filterBtn").click(function () {
@@ -72,10 +126,9 @@ $("#filterBtn").click(function () {
     let price = [];
     fillData(price, "price");
     let color = [];
-    fillData(color, 'color')
+    fillData(color, "color");
 
     let gender = $(this).attr("value").charAt(0);
-    let token = $('meta[name="csrf-token"]').attr("content");
     $.ajax({
         url: "/filter/" + gender + "/" + sort,
         type: "GET",
@@ -94,7 +147,7 @@ $("#filterBtn").click(function () {
         },
         success: function (response) {
             $("#clothesContainer").html(response);
-            closeFilters()
+            closeFilters();
         },
         error: function (xhr, status, error) {
             console.log(xhr.responseText);
