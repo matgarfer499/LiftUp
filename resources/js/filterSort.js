@@ -63,55 +63,23 @@ slider.noUiSlider.on("update", function (values, handle) {
 
 let token = $('meta[name="csrf-token"]').attr("content");
 $("#removeFilters").click(function () {
-    let sort = "default";
-    let typeProduct = [];
-    let sizes = [];
-    let discount = [];
-    let price = [];
-    let color = [];
-
-    let gender = $(this).attr("value").charAt(0);
-    $.ajax({
-        url: "/filter/" + gender + "/" + sort,
-        type: "GET",
-        headers: {
-            "X-CSRF-TOKEN": token, // Agregar el token CSRF como un encabezado personalizado
-        },
-        data: {
-            sort: sort,
-            typeProduct: typeProduct,
-            sizes: sizes,
-            discount: discount,
-            price: price,
-            color: color,
-            minPrice: 0,
-            maxPrice: 100,
-        },
-        success: function (response) {
-            $("#clothesContainer").html(response);
-            closeFilters();
-            $(".checkbox").prop("checked", false);
-            $(".checkbox").each(function () {
-                let input = $(this).find("input").eq(0);
-                let label = $(this).find("label").eq(0);
-                if (!input.hasClass("noChecked")) {
-                    label.removeClass(["bg-black", "text-white"]);
-                    input.addClass("noChecked");
-                }
-            });
-            $(".colorCheckbox").each(function () {
-                let input = $(this).find("input").eq(0);
-                let svg = $(this).find("svg").eq(0);
-                let label = $(this).find("label").eq(0);
-                if (!input.hasClass("noChecked")) {   
-                    svg.addClass("hidden");
-                    input.addClass("noChecked");
-                }
-            });
-        },
-        error: function (xhr, status, error) {
-            console.log(xhr.responseText);
-        },
+    $(".checkbox").prop("checked", false);
+    $(".checkbox").each(function () {
+        let input = $(this).find("input").eq(0);
+        let label = $(this).find("label").eq(0);
+        if (!input.hasClass("noChecked")) {
+            label.removeClass(["bg-black", "text-white"]);
+            input.addClass("noChecked");
+        }
+    });
+    $(".colorCheckbox").each(function () {
+        let input = $(this).find("input").eq(0);
+        let svg = $(this).find("svg").eq(0);
+        let label = $(this).find("label").eq(0);
+        if (!input.hasClass("noChecked")) {
+            svg.addClass("hidden");
+            input.addClass("noChecked");
+        }
     });
 });
 
