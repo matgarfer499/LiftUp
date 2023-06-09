@@ -19,7 +19,7 @@
         <div class="w-full font-normal text-sm text-[#9f9fa0] ml-2">
             {{$gender}}
         </div>
-        <div class="w-full font-bold text-lg ml-2">TODOS LOS PRODUCTOS <span class="font-normal text-xs text-[#9f9fa0]">{{$amount}} productos</span></div>
+        <div class="w-full font-bold text-lg ml-2">TODOS LOS PRODUCTOS <span id="totalProducts" class="font-normal text-xs text-[#9f9fa0]">{{$amount}} productos</span></div>
     </div>
 </div>
 <div class="w-full flex justify-center">
@@ -157,7 +157,7 @@
         <div class="w-full grid grid-cols-3 mb-2">
             @foreach($colors as $color)
             <div class="colorCheckbox w-1/3 m-auto relative">
-                <input name="color" type="checkbox" id="{{$color->color}}" value="{{$color->color}}" class="noChecked bottom-0 right-0 absolute pointer-events-none">
+                <input name="color" type="checkbox" id="{{$color->color}}" value="{{$color->color}}" class="noChecked bottom-0 right-0 opacity-0 absolute pointer-events-none">
                 <div class="w-12 h-12 rounded-full border-black/50 border-2 m-2 relative" style="background-color:#{{$color->color}}">
                     <label for="{{$color->color}}" class="w-full h-full absolute"></label>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hidden pointer-events-none absolute top-2 left-2">

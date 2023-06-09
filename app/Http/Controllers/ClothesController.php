@@ -90,17 +90,6 @@ class ClothesController extends Controller
         }else{
             $clothes = $clothes->get();
         }
-
-        // if($sort == "asc" || $sort == "desc"){
-        //     $clothes = Clothe::where('gender', $gender)->whereIn('clothes.type_product', $typeProduct)->
-        //     where('clothes.discount', 1)->whereIn('clothes.discount_rate', $discount)->with('images')->with('wishlist')->orderBy('clothes.price', $sort)->get();
-        // } else if ($sort == "new"){
-        //     $clothes = Clothe::where('gender', $gender)->whereIn('clothes.type_product', $typeProduct)->
-        //     where('clothes.discount', 1)->whereIn('clothes.discount_rate', $discount)->with('images')->with('wishlist')->latest('created_at')->get();
-        // }else{
-        //     $clothes = Clothe::where('gender', $gender)->whereIn('clothes.type_product', $typeProduct)->
-        //     where('clothes.discount', 1)->whereIn('clothes.discount_rate', $discount)->with('images')->with('wishlist')->get();
-        // }
         
         
         foreach ($clothes as $clothe) {

@@ -1,7 +1,7 @@
 
 @foreach($clothes as $clothe)
     @if($clothe->images->first()?->url)
-        <div class="group relative w-full mb-10">
+        <div class="clothes group relative w-full mb-10">
             <button onclick="addToWishlist({{$clothe->id}}, this)" data-clo="{{$clothe->id}}" class="likeBtn w-[30px] h-[30px] bg-white/40 shadow-sm shadow-[#676767] rounded-full absolute right-2 top-2 backdrop-blur-md group-hover:opacity-90 opacity-0 duration-500 ease-in-out flex justify-center items-center">
                 @if($clothe->isLiked)
                     <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[20px] h-[20px]">

@@ -63,7 +63,9 @@ slider.noUiSlider.on("update", function (values, handle) {
 
 let token = $('meta[name="csrf-token"]').attr("content");
 $("#removeFilters").click(function () {
+    $('input[name="sort"][value="default"]').prop('checked', true);
     $('input[type="checkbox"]').prop("checked", false);
+    slider.noUiSlider.set([0, 100])
     $(".checkbox").each(function () {
         let input = $(this).find("input").eq(0);
         let label = $(this).find("label").eq(0);
@@ -115,6 +117,11 @@ $("#filterBtn").click(function () {
         },
         success: function (response) {
             $("#clothesContainer").html(response);
+            let totalClothes = 0
+            $(".clothes").each(function(index){
+                totalClothes = index + 1;
+            })
+            $("#totalProducts").text(totalClothes + " productos")
             closeFilters();
         },
         error: function (xhr, status, error) {

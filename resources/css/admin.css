@@ -1,0 +1,6 @@
+.links:hover span {
+    color: white;
+}
+.links:hover svg {
+    stroke: white;
+}

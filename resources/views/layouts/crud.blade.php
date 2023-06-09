@@ -9,13 +9,14 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
     <title>@yield('title')</title>
     @vite('resources/css/app.css')
+    @vite('resources/css/admin.css')
 </head>
 
-<body class="bg-gray-200 m-0">
-    <div class="fixed h-screen w-2/12 border-r-2 border-white bg-gray-900">
-        <a href="{{route('clothes.index', ['gender' => 'H'])}}" class="flex flex-wrap justify-start items-center border-b-2 border-white bg-gray-900 pb-4">
-            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-3/12 h-24 scale-[3]" viewBox="0 0 1200.000000 900.000000" preserveAspectRatio="xMidYMid meet">
-                <g transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)" fill="white" stroke="none">
+<body class="m-0">
+    <div class="fixed h-screen w-2/12 border-r-2 border-white bg-[#F1F3F4]">
+        <a href="{{route('clothes.index', ['gender' => 'H'])}}" class="flex flex-wrap justify-start items-center border-b-2 border-[#B4C3C9] bg-[#F1F3F4] pb-4 ">
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-3/12 h-18 scale-150" viewBox="0 0 1200.000000 900.000000" preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)" fill="black" stroke="none">
                     <path d="M5795 6690 c-289 -33 -548 -120 -755 -255 -105 -68 -282 -249 -347
 -355 -29 -47 -55 -92 -58 -101 -4 -9 10 -33 35 -62 l41 -47 67 54 c175 139
 362 228 568 271 96 20 280 29 319 16 l30 -9 -30 -1 c-46 -1 -221 -46 -310 -79
@@ -61,33 +62,33 @@
                 </g>
             </svg>
 
-            <span class="ml-2 text-4xl font-semibold text-white">LiftUp</span>
+            <span class="ml-2 text-3xl font-semibold text-[#081226]">LiftUP</span>
         </a>
 
         <div class="w-full flex flex-wrap justify-center items-center">
-            <span class="w-3/4 text-sm text-gray-400 font-semibold py-4">ROPAS</span>
-            <a href="{{route('admin.all')}}" class="w-3/4 flex justify-start items-center py-2 rounded-sm hover:bg-gray-600">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-gray-200">
+            <span class="w-3/4 text-xs text-[#898B96] font-semibold py-4">DATOS DE LA ROPA</span>
+            <a href="{{route('admin.all')}}" class="links w-3/4 flex justify-start items-center py-2 rounded-md hover:bg-[#081226]">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-2 w-6 h-6 stroke-[#081226] pointer-events-none">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
-                <span class="font-bold text-gray-200 pl-2">Datos generales</span>
+                <span class="font-semibold text-[#081226] pl-2 pointer-events-none">General</span>
             </a>
 
-            <a href="{{route('admin.images')}}" class="w-3/4 flex justify-start items-center py-2 rounded-sm hover:bg-gray-600">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-gray-200">
+            <a href="{{route('admin.images')}}" class="links w-3/4 flex justify-start items-center py-2 rounded-md hover:bg-[#081226]">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-2 w-6 h-6 stroke-[#081226] pointer-events-none">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                 </svg>
 
-                <span class="font-bold text-gray-200 pl-2">Imagenes</span>
+                <span class="font-semibold text-[#081226] pl-2 pointer-events-none">Imagenes</span>
             </a>
         </div>
         <div class="w-full flex flex-wrap justify-center items-center">
-            <span class="w-3/4 text-sm text-gray-400 font-semibold py-4">CONFIGURACION</span>
-            <a href="{{route('login')}}" class="w-3/4 flex justify-start items-center py-2 rounded-sm hover:bg-gray-600">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-gray-200">
+            <span class="w-3/4 text-xs text-[#898B96] font-semibold py-4">CONFIGURACIÓN</span>
+            <a href="{{route('login')}}" class="links w-3/4 flex justify-start items-center py-2 rounded-md hover:bg-[#081226] hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-2 w-6 h-6 stroke-[#081226]">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                 </svg>
-                <span class="font-bold text-gray-200 pl-2">Perfil</span>
+                <span class="font-bold text-[#081226] pl-2 group-hover:text-white">Perfil</span>
             </a>
         </div>
     </div>
