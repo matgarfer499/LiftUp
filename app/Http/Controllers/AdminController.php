@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Clothe;
 use App\Models\Image;
+use App\Models\Color;
+use App\Models\Size;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -79,8 +81,7 @@ class AdminController extends Controller
     //Mostrar datos de las imagenes
     public function images()
     {
-        $images = Clothe::with('images')->groupBy('clothes.id', 'clothes.type_product', 'clothes.name', 'clothes.gender', 'clothes.discount',
-                'clothes.discount_rate', 'clothes.price', 'clothes.description', 'clothes.material', 'clothes.created_at', 'clothes.updated_at')->paginate(5);
+        $images = Clothe::with('images')->paginate(5);
 
         return view('admin.imagesControl', compact('images'));
     }
@@ -105,5 +106,38 @@ class AdminController extends Controller
         $image = Image::where('idImg', $id);
         $image->delete();
         return redirect()->back()->with('mensaje', 'El registro ha sido eliminado correctamente.');
+    }
+
+    public function sizesColors()
+    {
+        $sizesColors = Clothe::with('clothingColor')->with('clothingSize')->paginate(7);
+        $adminColors = Color::get();
+        $adminSizes = Size::get();
+        $existingSizes = [];
+        return view('admin.sizesColors', compact('sizesColors', 'adminColors', 'adminSizes', 'existingSizes'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $url = $request->input('url');
+
+        $clothes = Clothe::where(function ($query) use ($search) {
+            $query->where('type_product', 'like', '%'.$search.'%')
+                  ->orWhere('name', 'like', '%'.$search.'%')
+                  ->orWhere('gender', 'like', '%'.$search.'%');
+        });
+
+        if($url === "imagenes"){
+            $clothes = $clothes->with('images');
+        } else if($url === "sizesColors"){
+            $clothes = $clothes->with('clothingColor')->with('clothingSize');
+        }
+        $adminColors = Color::get();
+        $adminSizes = Size::get();
+
+        $clothes = $clothes->get();
+
+        return view('admin.search', compact('clothes', 'url', 'adminColors', 'adminSizes'));
     }
 }

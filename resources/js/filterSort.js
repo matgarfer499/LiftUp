@@ -1,6 +1,18 @@
 "use strict";
 import { closeFilters } from "./slider.js";
 
+export function checkColor(){
+    $(".colorCheckbox").each(function () {
+        let input = $(this).find("input").eq(0);
+        let svg = $(this).find("svg").eq(0);
+        let label = $(this).find("label").eq(0);
+        if (!input.hasClass("noChecked")) {
+            svg.addClass("hidden");
+            input.addClass("noChecked");
+        }
+    });
+}
+
 $(".checkbox").each(function () {
     let input = $(this).find("input").eq(0);
     let label = $(this).find("label").eq(0);
@@ -74,15 +86,7 @@ $("#removeFilters").click(function () {
             input.addClass("noChecked");
         }
     });
-    $(".colorCheckbox").each(function () {
-        let input = $(this).find("input").eq(0);
-        let svg = $(this).find("svg").eq(0);
-        let label = $(this).find("label").eq(0);
-        if (!input.hasClass("noChecked")) {
-            svg.addClass("hidden");
-            input.addClass("noChecked");
-        }
-    });
+    checkColor()
 });
 
 $("#filterBtn").click(function () {
@@ -136,3 +140,5 @@ function fillData(array, name) {
     });
     return array;
 }
+
+
