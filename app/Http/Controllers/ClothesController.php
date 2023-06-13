@@ -106,4 +106,18 @@ class ClothesController extends Controller
 
         return view('clothes.sortFilter', compact('clothes'));
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $gender = $request->input('gender');
+
+        $clothes = Clothe::where(function ($query) use ($search) {
+            $query->where('type_product', 'like', '%'.$search.'%')
+                  ->orWhere('name', 'like', '%'.$search.'%')
+                  ->orWhere('gender', 'like', '%'.$search.'%');
+        })->where('gender', $gender)->get();
+
+        return view('clothes.sortFilter', compact('clothes'));
+    }
 }

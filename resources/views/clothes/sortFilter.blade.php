@@ -1,4 +1,4 @@
-
+@if(count($clothes) > 0)
 @foreach($clothes as $clothe)
     @if($clothe->images->first()?->url)
         <div class="clothes group relative w-full mb-10">
@@ -34,3 +34,6 @@
     </div>
     @endif
 @endforeach
+@else
+<div>NO HAY NADA GANZO NO HAY NADA ME VOY A MATAR</div>
+@endif

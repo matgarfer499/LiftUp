@@ -15,6 +15,7 @@
 
 @section('content')
 <div class="w-full flex justify-center">
+    <input id="searchInput" name="{{$gender}}" type="text" class="opacity-0 w-11/12 m-auto p-4 shadow-sm shadow-black fixed z-50 bg-white rounded-full pointer-events-none" autofocus></input>
     <div class="w-11/12 flex flex-wrap justify-between">
         <div class="w-full font-normal text-sm text-[#9f9fa0] ml-2">
             {{$gender}}
@@ -157,7 +158,7 @@
         <div class="w-full grid grid-cols-3 mb-2">
             @foreach($colors as $color)
             <div class="colorCheckbox w-1/3 m-auto relative">
-                <input name="color" type="checkbox" id="{{$color->color}}" value="{{$color->color}}" class="noChecked bottom-0 right-0 opacity-0 absolute pointer-events-none">
+                <input name="color" type="checkbox" id="{{$color->color}}" value="{{$color->color}}" class="noChecked bottom-0 right-0 opacity-0 absolute pointer-events-none" autofocus>
                 <div class="w-12 h-12 rounded-full border-black/50 border-2 m-2 relative" style="background-color:#{{$color->color}}">
                     <label for="{{$color->color}}" class="w-full h-full absolute"></label>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hidden pointer-events-none absolute top-2 left-2">
