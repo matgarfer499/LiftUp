@@ -16,6 +16,7 @@ class Review extends Model
         'idClo',
         'score',
         'comment',
+        'date',
     ];
 
 

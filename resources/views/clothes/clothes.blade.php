@@ -15,7 +15,7 @@
 
 @section('content')
 <div class="w-full flex justify-center">
-    <input id="searchInput" name="{{$gender}}" type="text" class="opacity-0 w-11/12 m-auto p-4 shadow-sm shadow-black fixed z-50 bg-white rounded-full pointer-events-none" autofocus></input>
+    <input id="searchInput" name="{{$gender}}" type="text" class="opacity-0 w-11/12 m-auto p-4 shadow-lg shadow-black fixed z-50 bg-white rounded-full pointer-events-none" autofocus></input>
     <div class="w-11/12 flex flex-wrap justify-between">
         <div class="w-full font-normal text-sm text-[#9f9fa0] ml-2">
             {{$gender}}

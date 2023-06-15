@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('idClo')->unsigned();
             $table->char('score', 1);
             $table->text('comment');
+            $table->date('date');
 
             $table->foreign('idUse')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('idClo')->references('id')->on('clothes')->onDelete('cascade');

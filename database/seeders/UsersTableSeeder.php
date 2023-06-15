@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
+                'profile_picture' => 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', 
                 'first_name' => "Matías",
                 "last_name" => "García",
                 "admin" => "1",
@@ -24,6 +25,7 @@ class UsersTableSeeder extends Seeder
                 "password" => bcrypt("admin"),
             ],
             [
+                'profile_picture' => 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
                 'first_name' => "user",
                 "last_name" => "user",
                 "admin" => "0",

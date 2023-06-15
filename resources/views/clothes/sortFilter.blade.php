@@ -35,5 +35,5 @@
     @endif
 @endforeach
 @else
-<div>NO HAY NADA GANZO NO HAY NADA ME VOY A MATAR</div>
+<div class="w-full flex justify-center items-center p-6 bg-gray-200 text-xl font-semibold rounded-full">NO SE HAN ENCOTRADO RESULTADOS</div>
 @endif

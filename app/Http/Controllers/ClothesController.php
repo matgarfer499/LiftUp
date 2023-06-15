@@ -46,8 +46,16 @@ class ClothesController extends Controller
         $tallas = Clothe::with('clothingSize')->where('id', $id)->get();
         
         $reviews = Review::with('userReview')->where('idClo', $id)->get();
+        $totalReviews = $reviews->count();
 
-        return view('clothes.images', compact('images', 'colores', 'tallas', 'reviews'));
+        $stars = [];
+        
+        for ($score = 5; $score >= 1; $score--) {
+            $stars[$score] = Review::with('userReview')->where('idClo', $id)->where('score', $score)->get();
+        }
+
+        $puntuation = Review::with('userReview')->where('idClo', $id)->sum('score');
+        return view('clothes.images', compact('images', 'colores', 'tallas', 'reviews', 'totalReviews', 'stars', 'puntuation'));
     }
 
     public function sortFilter(Request $request, $gender){

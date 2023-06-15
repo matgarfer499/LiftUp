@@ -20,6 +20,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+            'profile_picture' =>fake()->imageUrl(340, 400, 'profile', true),
             'first_name' => fake()->name(),
             'last_name' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),

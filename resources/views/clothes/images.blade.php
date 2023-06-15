@@ -9,20 +9,20 @@
 @endsection
 
 @section('content')
-<div class="w-full flex flex-wrap">
+<div class="w-full flex flex-wrap h-[90vh]">
     <div class="w-6/12">
         <div class="w-2/5 absolute h-[90vh] top-20 snap-y snap-mandatory overflow-scroll scrollbar-x-hidden">
             @for($i = 0; $i< count($images[0]->images); $i++)
-            <div class="imgContainer snap-start flex w-[96%] h-[90vh]">
-                <img src="{{$images[0]->images[$i]->url}}" class="object-cover">
-            </div>
-            @endfor
+                <div class="imgContainer snap-start flex w-[96%] h-[90vh]">
+                    <img src="{{$images[0]->images[$i]->url}}" class="object-cover">
+                </div>
+                @endfor
         </div>
         <div class="cursor-pointer w-12/12 flex flex-wrap justify-start flex-col items-end m-auto">
             @for($i = 0; $i< count($images[0]->images); $i++)
-            <button class="imgSelector w-2/12" data-index="{{$i}}">
-                <img src="{{$images[0]->images[$i]->url}}" class="w-6/12 my-1 hover:border-2 hover:border-black">
-            </button>
+                <button class="imgSelector w-2/12" data-index="{{$i}}">
+                    <img src="{{$images[0]->images[$i]->url}}" class="w-6/12 my-1 hover:border-2 hover:border-black">
+                </button>
                 @endfor
         </div>
     </div>
@@ -41,7 +41,7 @@
             <summary class="flex justify-between" id="materialsDisplay">
                 <span class="p-1 font-bold text-xl">
                     COMPOSIÓN Y MATERIALES
-                </span> 
+                </span>
                 <span class="font-bold flex justify-center items-center" id="moreLess">
                     <svg id="more" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="svg w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -58,17 +58,14 @@
             @for($i = 0; $i < count($colores[0]->clothingColor); $i++)
                 <div class="w-[25px] h-[25px] mr-2 cursor-pointer border-2 border-[#acaaaa] hover:border-4 focus:border-2 active:border-white" style="background-color:#{{$colores[0]->clothingColor[$i]->color}}">
                 </div>
-            @endfor
+                @endfor
         </div>
         <div class="w-full border-y-2 border-x-0 border-black flex flex-col justify-center mt-4">
             @for($i = 0; $i < count($tallas[0]->clothingSize); $i++)
                 <div class="h-[35px] w-full cursor-pointer hover:bg-[#e0e0e0] text-sm flex items-center justify-between">
                     <span>{{$tallas[0]->clothingSize[$i]->size}}</span>
                     <span class="text-[#4B4949]">
-                        @if($tallas[0]->clothingSize[$i]->pivot->stock < 10)
-                            Quedan pocas unidades
-                        @endif
-                    </span>
+                        @if($tallas[0]->clothingSize[$i]->pivot->stock < 10) Quedan pocas unidades @endif </span>
                 </div>
                 @endfor
         </div>
@@ -86,9 +83,9 @@
                 <span class="text-sm text-white font-medium">AÑADIR A LA BOLSA</span>
             </div>
             <div class="w-2/12 rounded-xl bg-white border-2 border-black flex justify-center items-center tracking-widest">
-                    <svg class="w-[30px] h-[30px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.78125 4C4.53699 4 2 6.81981 2 10.1559C2 11.8911 2.27768 13.32 3.31283 14.8234C4.3005 16.258 5.9429 17.7056 8.49134 19.6155L12 22L15.5084 19.6158C18.057 17.7058 19.6995 16.258 20.6872 14.8234C21.7223 13.32 22 11.8911 22 10.1559C22 6.81982 19.463 4 16.2188 4C14.5909 4 13.1818 4.66321 12 5.86323C10.8182 4.66321 9.40906 4 7.78125 4ZM7.78125 6C5.77551 6 4 7.7855 4 10.1559C4 10.7049 4.03107 11.1875 4.10853 11.6325C4.23826 12.378 4.49814 13.0182 4.96014 13.6893C5.74532 14.8297 7.14861 16.11 9.69156 18.0157L12 19.7494L14.3084 18.0157C16.8514 16.11 18.2547 14.8297 19.0399 13.6893C19.7777 12.6176 20 11.6245 20 10.1559C20 7.7855 18.2245 6 16.2188 6C14.9831 6 13.8501 6.58627 12.8033 7.99831C12.6147 8.25274 12.3167 8.40277 12 8.40277C11.6833 8.40277 11.3853 8.25274 11.1967 7.99831C10.1499 6.58627 9.01689 6 7.78125 6Z" fill="#0F1729" />
-                    </svg>
+                <svg class="w-[30px] h-[30px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.78125 4C4.53699 4 2 6.81981 2 10.1559C2 11.8911 2.27768 13.32 3.31283 14.8234C4.3005 16.258 5.9429 17.7056 8.49134 19.6155L12 22L15.5084 19.6158C18.057 17.7058 19.6995 16.258 20.6872 14.8234C21.7223 13.32 22 11.8911 22 10.1559C22 6.81982 19.463 4 16.2188 4C14.5909 4 13.1818 4.66321 12 5.86323C10.8182 4.66321 9.40906 4 7.78125 4ZM7.78125 6C5.77551 6 4 7.7855 4 10.1559C4 10.7049 4.03107 11.1875 4.10853 11.6325C4.23826 12.378 4.49814 13.0182 4.96014 13.6893C5.74532 14.8297 7.14861 16.11 9.69156 18.0157L12 19.7494L14.3084 18.0157C16.8514 16.11 18.2547 14.8297 19.0399 13.6893C19.7777 12.6176 20 11.6245 20 10.1559C20 7.7855 18.2245 6 16.2188 6C14.9831 6 13.8501 6.58627 12.8033 7.99831C12.6147 8.25274 12.3167 8.40277 12 8.40277C11.6833 8.40277 11.3853 8.25274 11.1967 7.99831C10.1499 6.58627 9.01689 6 7.78125 6Z" fill="#0F1729" />
+                </svg>
             </div>
         </div>
         <div class="w-full">
@@ -96,32 +93,56 @@
         </div>
     </div>
 </div>
-<div class="flex justify-start items-center mt-40 w-full">
-    <span class="text-4xl font-bold ml-24">REVIEWS</span>
-</div>
-<div class="flex flex-col items-center justify-center w-full">
-    @for($i = 0; $i < count($reviews); $i++) <div class="w-11/12 flex flex-col bg-gray-200 rounded-lg mb-8">
-        <div class="w-full flex justify-between p-4 mb-2">
-            <span class="text-xl font-bold">{{$reviews[$i]->userReview[0]->first_name}}</span>
-            <span class="text-xl font-bold flex flex-wrap">
-                @for($j = 0; $j < 5; $j++) 
-                    @if($j < $reviews[$i]->score)
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="yellow" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+@if($totalReviews > 0)
+<div>
+    <div class="flex justify-start items-center mb-2 m-auto w-11/12">
+        <span class="text-3xl font-bold">REVIEWS ({{$totalReviews}})</span>
+    </div>
+    <div class="w-11/12 m-auto text-[#4B4949] mb-2 font-semibold text-lg">{{round($puntuation/$totalReviews, 2)}}/5</div>
+    <div class="w-11/12 m-auto text-[#4B4949] flex flex-col mb-10">
+        @for($i = 5; $i>0; $i--)
+        <div class="w-full flex justify-between items-center">
+            <span class="text-md font-medium mr-4">{{$i}}</span>
+            <div class="w-full relative">
+                <div class="w-full h-1 bg-[#C2C2C2] rounded-lg"></div>
+                <div class="h-[6px] bg-black rounded-lg top-0 left-0 absolute" style="width: calc(100%*{{count($stars[$i])/$totalReviews}});"></div>
+            </div>
+        </div>
+        @endfor
+    </div>
+    <div class="flex flex-col items-center justify-center w-full">
+        @for($i = 0; $i < count($reviews); $i++) 
+        <div class="w-11/12 mb-4 flex border-t-4 border-black h-40">
+            <div class="w-2/12 h-[120px] flex items-center">
+                    <img src="{{$reviews[$i]->userReview[0]->profile_picture}}" class="w-[100px] h-[100px] rounded-full m-auto object-cover" alt="">
+            </div>
+            <div class="w-10/12 flex flex-wrap">
+                <div class="w-full flex justify-between items-center">
+                    <div class="text-xl font-bold flex flex-col">
+                        <span>{{$reviews[$i]->userReview[0]->first_name}}</span>
+                        <span class="flex flex-row">
+                        @for($j = 0; $j < 5; $j++) @if($j < $reviews[$i]->score)
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                         </svg>
-                    @else
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        @else
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#D0CBA8" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                         </svg>
 
-                    @endif
-                    @endfor
-                </>
+                        @endif
+                        @endfor
+                        </span>
+                    </div>
+                    <span>Valorado el {{$reviews[$i]->date}}</span>
+                </div>
+                <div class="w-full">
+                    <span class="text-gray-800 font-semibold">"{{$reviews[$i]->comment}}"</span>
+                </div>
+            </div>  
         </div>
-        <div class="w-full flex justify-start p-4">
-            <span class="text-gray-800 font-semibold">"{{$reviews[$i]->comment}}"</span>
-        </div>
+    @endfor
 </div>
-@endfor
 </div>
+@endif
 @endsection

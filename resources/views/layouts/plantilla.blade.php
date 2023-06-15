@@ -130,9 +130,9 @@
         <a href="{{route('clothes.index', ['gender' => 'H'])}}" class="font-semibold text-sm mr-4 cursor-pointer hover:text-red-500">HOMBRE</a>
         <a href="{{route('clothes.index', ['gender' => 'M'])}}" class="font-semibold text-sm mr-4 cursor-pointer hover:text-red-500">MUJER</a>
       </div>
-      <div class="w-3/12 flex justify-center" id="searchBar">
+      <div class="w-3/12 flex justify-center">
         <div class="w-6/12 flex flex-wrap justify-evenly">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="cursor-pointer hover:stroke-red-500 lg:w-[25px] lg:h-[25px] w-5 h-5 sm:block hidden">
+          <svg id="searchBar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="cursor-pointer hover:stroke-red-500 lg:w-[25px] lg:h-[25px] w-5 h-5 sm:block hidden">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
           </svg>
         <a href="{{auth()->user()? route('wishlist.index', ['idUse' => auth()->user()?->id]) : route('login')}}" class="hover:fill-red-700">

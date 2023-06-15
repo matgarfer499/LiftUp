@@ -23,6 +23,7 @@ class ReviewFactory extends Factory
             'idClo' => fake()->numberBetween(1,40),
             'score' => fake()->numberBetween(1, 5),
             'comment' => fake()->paragraph(),
+            'date' => fake()->date('Y/m/d'),
         ];
     }
 }
