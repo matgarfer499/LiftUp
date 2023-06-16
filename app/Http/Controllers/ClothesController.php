@@ -39,7 +39,19 @@ class ClothesController extends Controller
 
     public function view($id)
     {
-        $images = Clothe::where('id', $id)->with('images')->get();
+        $images = Clothe::where('id', $id)->with('images')->with('wishlist')->get();
+
+        foreach ($images as $image) {
+            $isLiked = false; // Valor predeterminado
+            foreach ($image->wishlist as $liked) {
+                if ($liked->pivot->idUse == auth()->user()?->id) {
+                    $isLiked = true; // Se encontró un "liked"
+                break; // Salir del bucle interno
+                }
+            }
+            // Asignar el valor de $isLiked al objeto $man
+            $image->isLiked = $isLiked;
+        }
 
         $colores = Clothe::with('clothingColor')->where('id', $id)->get();
 
