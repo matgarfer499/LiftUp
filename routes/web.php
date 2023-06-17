@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
 
 //Home page
 Route::get('/', function () {
-    return view('clothes.home');
+    return view('clothes.home')->name('home');
 });
 //ver ropas
 Route::get('/clothes/{gender}', [ClothesController::class, 'clothes'])->name('clothes.index');

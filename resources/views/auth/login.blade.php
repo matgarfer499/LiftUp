@@ -15,12 +15,12 @@
 
 <body>
     <div class="w-screen h-screen flex">
-        <div class="w-1/2 h-screen">
-            <img src="https://media.gq-magazine.co.uk/photos/611cde62ca361ca29931f2b8/16:9/pass/18082021_GYM_HP.jpg" class="object-cover h-full w-full" alt="">
+        <div class="lg:w-1/2 lg:block hidden w-0 h-screen">
+            <img src="https://images.ctfassets.net/8urtyqugdt2l/3Y0XSM5itoSe0RptiSEZs9/88aa528267c9edd0d128dd74eaecaa67/UWS_Tile_Training_App.png" class="object-cover h-full w-full" alt="">
         </div>
-        <div class="w-1/2 h-screen flex flex-col items-center">
-            <a class="h-1/4 w-full flex justify-center items-center" href="/">
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="w-full" height="h-1/2" viewBox="0 0 1200.000000 900.000000" preserveAspectRatio="xMidYMid meet">
+        <div class="w-full lg:w-1/2 h-screen flex flex-col items-center">
+            <a class="w-2/4 flex justify-center items-center" href="/">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" height="160px" viewBox="0 0 1200.000000 900.000000" preserveAspectRatio="xMidYMid meet">
                     <g transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                         <path d="M5795 6690 c-289 -33 -548 -120 -755 -255 -105 -68 -282 -249 -347
 -355 -29 -47 -55 -92 -58 -101 -4 -9 10 -33 35 -62 l41 -47 67 54 c175 139
@@ -69,10 +69,10 @@
 
             </a>
             <div class="w-7/12 flex justify-between">
-                <button class="w-1/2 font-bold text-md" id="loginBtn">
+                <button class="w-1/2 font-bold sm:text-md text-xs" id="loginBtn">
                     INICIAR SESIÓN
                 </button>
-                <button class="w-1/2 font-bold opacity-30 text-md" id="registerBtn">
+                <button class="w-1/2 font-bold opacity-30 sm:text-md text-xs" id="registerBtn">
                     REGISTRARSE
                 </button>
             </div>

@@ -8,7 +8,7 @@ filterBtn.click(function () {
     backgroundBlur.removeClass('hidden')
     $('body').css('overflow', 'hidden')
     filterDiv.animate({
-        left: $(window).width()/1.33+'px'
+        right: 0,
     }, 500)
 });
 
@@ -23,7 +23,7 @@ export function closeFilters(){
         next()
     })
     filterDiv.animate({
-        left: '2000px'
+        right: '-2000px'
     }, 500)
     $('body').css('overflow', 'visible')
 }

@@ -10,26 +10,26 @@
 @endsection
 
 @section('content')
-<div class="w-full flex flex-wrap h-[90vh]">
-    <div class="w-6/12">
-        <div class="w-2/5 absolute h-[90vh] top-20 snap-y snap-mandatory overflow-scroll scrollbar-x-hidden">
+<div class="w-full flex flex-wrap">
+    <div class="sm:w-6/12 w-full flex justify-between">
+        <div class="sm:w-2/5 w-full block sm:absolute sm:h-[90vh] h-96 top-20 snap-y snap-mandatory overflow-scroll scrollbar-x-hidden border-b-2 border-black sm:border-0">
             @for($i = 0; $i< count($images[0]->images); $i++)
-                <div class="imgContainer snap-start flex w-[96%] h-[90vh]">
-                    <img src="{{$images[0]->images[$i]->url}}" class="object-cover">
+                <div class="imgContainer snap-start flex sm:w-[96%] w-full sm:h-[90vh] h-full">
+                    <img src="{{$images[0]->images[$i]->url}}" class="w-full sm:object-cover object-contain">
                 </div>
                 @endfor
         </div>
-        <div class="cursor-pointer w-12/12 flex flex-wrap justify-start flex-col items-end m-auto">
+        <div class="cursor-pointer hidden ml-2 sm:ml-0 h-full sm:flex sm:justify-start sm:flex-col sm:items-end flex-col flex-wrap w-full">
             @for($i = 0; $i< count($images[0]->images); $i++)
                 <button class="imgSelector w-2/12" data-index="{{$i}}">
-                    <img src="{{$images[0]->images[$i]->url}}" class="w-6/12 my-1 hover:border-2 hover:border-black">
+                    <img src="{{$images[0]->images[$i]->url}}" class="w-[70px] lg:w-[80px] md:w-[60px] sm:w-[45px] my-1 hover:border-2 hover:border-black">
                 </button>
-                @endfor
+            @endfor
         </div>
     </div>
-    <div class="w-5/12">
-        <div class="w-full flex justify-between items-center">
-            <span class="text-3xl font-semibold uppercase">{{$images[0]->name}}</span>
+    <div class="w-full sm:w-5/12 h-screen">
+        <div class="w-11/12 m-auto sm:w-full flex sm:flex-row gap-2 justify-between sm:items-center">
+            <span class="text-2xl sm:text-3xl font-semibold uppercase flex flex-col">{{$images[0]->name}} <span class="text-[10px] sm:text-xs text-gray-400">{{$images[0]->type_product}}</span></span>
             @if($images[0]->discount == 1)
             <span class="text-red-600 text-2xl float-right mt-[12px]">-{{$images[0]->discount_rate}}% | {{round($images[0]->price - ($images[0]->price * $images[0]->discount_rate/100),2)}}€</span>
             @else
@@ -37,8 +37,8 @@
             @endif
         </div>
         <br>
-        <p class="text-[#4B4949] w-full text-justify">{{$images[0]->description}}</p>
-        <details class="w-full border-y-2 border-x-0 border-[#acaaaa] my-4 py-2">
+        <p class="text-[#4B4949] sm:w-full w-11/12 m-auto text-justify">{{$images[0]->description}}</p>
+        <details class="w-11/12 m-auto sm:w-full border-y-2 border-x-0 border-[#acaaaa] my-4 py-2">
             <summary class="flex justify-between" id="materialsDisplay">
                 <span class="p-1 font-bold text-xl">
                     COMPOSIÓN Y MATERIALES
@@ -55,13 +55,13 @@
             </summary>
             <p class="text-[#4B4949] text-justify w-11/12 p-2">{{$images[0]->material}}</p>
         </details>
-        <div class="w-full flex flex-wrap justify-evenly mt-4">
+        <div class="w-11/12 m-auto sm:w-full flex flex-wrap justify-evenly mt-4">
             @for($i = 0; $i < count($colores[0]->clothingColor); $i++)
                 <div class="w-[25px] h-[25px] mr-2 cursor-pointer border-2 border-[#acaaaa] hover:border-4 focus:border-2 active:border-white" style="background-color:#{{$colores[0]->clothingColor[$i]->color}}">
                 </div>
                 @endfor
         </div>
-        <div class="w-full border-y-2 border-x-0 border-black flex flex-col justify-center mt-4">
+        <div class="w-11/12 m-auto sm:w-full border-y-2 border-x-0 border-black flex flex-col justify-center mt-4">
             @for($i = 0; $i < count($tallas[0]->clothingSize); $i++)
                 <div class="h-[35px] w-full cursor-pointer hover:bg-[#e0e0e0] text-sm flex items-center justify-between">
                     <span>{{$tallas[0]->clothingSize[$i]->size}}</span>
@@ -70,11 +70,11 @@
                 </div>
                 @endfor
         </div>
-        <div class="w-full flex justify-between">
+        <div class="w-11/12 m-auto sm:w-full flex justify-between">
             <span class="font-normal text-sm">ENCUENTRA TU TALLA</span>
             <span class="font-normal hover:underline text-sm">GUIA DE TALLAS</span>
         </div>
-        <div class="w-full flex justify-between mt-10">
+        <div class="w-11/12 m-auto sm:w-full flex justify-between mt-10">
             <div class="w-9/12 rounded-xl bg-black flex justify-center items-center p-4 tracking-widest">
                 <span>
                     <svg class="w-[15px] h-[15px] mr-2" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg">
@@ -95,12 +95,11 @@
                 @endif
             </button>
         </div>
-        <div class="w-full">
+        <div class="w-11/12 m-auto sm:w-full">
             <span>ENVIO, CAMBIOS Y DEVOLUCIONES</span>
         </div>
     </div>
-</div>
-@if($totalReviews > 0)
+    @if($totalReviews > 0)
 <div>
     <div class="flex justify-start items-center mb-2 m-auto w-11/12">
         <span class="text-3xl font-bold">REVIEWS ({{$totalReviews}})</span>
@@ -136,19 +135,19 @@
         @for($i = 0; $i < count($reviews); $i++) 
         <div class="w-11/12 mb-4 flex border-t-4 border-black h-40">
             <div class="w-2/12 h-[120px] flex items-center">
-                    <img src="{{$reviews[$i]->userReview[0]->profile_picture}}" class="w-[100px] h-[100px] rounded-full m-auto object-cover" alt="">
+                <img src="{{$reviews[$i]->userReview[0]->profile_picture}}" class="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] rounded-full m-auto object-cover" alt="">
             </div>
             <div class="w-10/12 flex flex-wrap">
-                <div class="w-full flex justify-between items-center">
+                <div class="w-full flex justify-around sm:justify-between items-center">
                     <div class="text-xl font-bold flex flex-col">
-                        <span>{{$reviews[$i]->userReview[0]->first_name}}</span>
+                        <span class="text-xs sm:text-base">{{$reviews[$i]->userReview[0]->first_name}}</span>
                         <span class="flex flex-row">
                         @for($j = 0; $j < 5; $j++) @if($j < $reviews[$i]->score)
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 sm:w-6 sm:h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                         </svg>
                         @else
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#D0CBA8" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#D0CBA8" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 sm:w-6 sm:h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                         </svg>
 
@@ -156,10 +155,10 @@
                         @endfor
                         </span>
                     </div>
-                    <span>Valorado el {{$reviews[$i]->date}}</span>
+                    <span class="text-xs sm:text-base">Valorado el {{$reviews[$i]->date}}</span>
                 </div>
-                <div class="w-full">
-                    <span class="text-gray-800 font-semibold">"{{$reviews[$i]->comment}}"</span>
+                <div class="w-11/12 m-auto sm:w-full">
+                    <span class="text-gray-800 font-semibold text-justify text-xs sm:text-base">"{{$reviews[$i]->comment}}"</span>
                 </div>
             </div>  
         </div>
@@ -167,4 +166,5 @@
 </div>
 </div>
 @endif
+</div>
 @endsection

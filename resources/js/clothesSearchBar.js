@@ -1,6 +1,6 @@
 "use strict";
 
-let $searchBar = $("#searchBar");
+let $searchBar = $(".searchBar");
 let $searchInput = $("#searchInput");
 
 $searchBar.on("click", function () {
@@ -10,7 +10,7 @@ $searchBar.on("click", function () {
 
 $(document).on("click", function (event) {
     // Comprobar si se hizo clic fuera del elemento específico
-    if ($searchInput.hasClass("active") && !$(event.target).closest("#searchBar").length && !$(event.target).closest("#searchInput").length) {
+    if ($searchInput.hasClass("active") && !$(event.target).closest(".searchBar").length && !$(event.target).closest("#searchInput").length) {
         $searchInput.removeClass("opacity-100 active");
         $searchInput.addClass("opacity-0 pointer-events-none");
     }

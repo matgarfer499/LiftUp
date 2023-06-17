@@ -9,7 +9,7 @@ bagBtn.click(function () {
     $("body").css("overflow", "hidden");
     bagDiv.animate(
         {
-            left: $(window).width() / 1.33 + "px",
+            right: 0,
         },
         500
     );
@@ -27,7 +27,7 @@ export function closeFilters() {
     });
     bagDiv.animate(
         {
-            left: "2000px",
+            right: "-2000px",
         },
         500
     );
@@ -46,7 +46,6 @@ $(".deleteFromBag").each(function(){
 $(".addToBag").each(function(){
     $(this).on("click", function() {
         addDeleteBag($(this).val());
-        alert("ropa añadida")
     });
 });
 
