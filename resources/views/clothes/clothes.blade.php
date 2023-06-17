@@ -44,8 +44,6 @@
         </button>
     </div>
 </div>
-<div id="backgroundBlur" class="w-screen h-screen bg-black/90 backdrop-blur-sm fixed top-0 z-40 hidden">
-</div>
 <div id="filterSortDiv" class="fixed z-50 h-screen max-h-screen w-1/4 bg-white top-0 -right-2/4 overflow-auto scrollbar-x-hidden">
     <div class="w-11/12 flex justify-between items-center h-[50px] m-auto">
         <div id="closeFiltersBtn" class="w-1/4 flex cursor-pointer">
@@ -168,7 +166,7 @@
             </div>
             @endforeach
         </div>
-        </details>
+    </details>
     <details class="w-11/12 cursor-pointer py-6 border-b-2 border-gray-300 m-auto">
         <summary class="flex justify-between items-center h-full">
             <span class="font-bold">DESCUENTO</span>
@@ -207,13 +205,13 @@
             </svg>
         </summary>
         <div class="w-full grid grid-cols-1">
-        <div class="flex w-11/12 m-auto justify-between items-center">
-            <span id="min-price"></span>
-            <span id="max-price"></span>
-        </div>
-        <div class="w-11/12 m-auto">
-            <div id="slider" class="mt-2"></div>
-        </div>
+            <div class="flex w-11/12 m-auto justify-between items-center">
+                <span id="min-price"></span>
+                <span id="max-price"></span>
+            </div>
+            <div class="w-11/12 m-auto">
+                <div id="slider" class="mt-2"></div>
+            </div>
         </div>
     </details>
     <button id="filterBtn" value="{{$gender}}" class="w-11/12 m-auto mt-10 p-1 flex justify-center items-center bg-black text-white text-lg font-semibold rounded-full">
@@ -227,13 +225,13 @@
         <div class="group relative w-full mb-10">
             <button onclick="addToWishlist({{$clothe->id}}, this)" class="likeBtn w-[30px] h-[30px] bg-white/40 shadow-sm shadow-[#676767] rounded-full absolute right-2 top-2 backdrop-blur-md group-hover:opacity-90 opacity-0 duration-500 ease-in-out flex justify-center items-center">
                 @if($clothe->isLiked)
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[20px] h-[20px]">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                    </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[20px] h-[20px]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
                 @else
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[20px] h-[20px]">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                    </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[20px] h-[20px]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
                 @endif
             </button>
             <a href="{{route('images.see', ['id' => $clothe->id])}}">

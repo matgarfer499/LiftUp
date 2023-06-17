@@ -16,6 +16,7 @@
   @vite('resources/css/app.css')
   @vite('resources/css/homePage.css')
   @vite('resources/js/clothesSearchBar.js')
+  @vite('resources/js/bagSlider.js')
 </head>
 
 <body class="bg-white m-0">
@@ -145,15 +146,74 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </a>
-          <svg class="lg:w-[25px] lg:h-[25px] w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16.0004 9V6C16.0004 3.79086 14.2095 2 12.0004 2C9.79123 2 8.00037 3.79086 8.00037 6V9M3.59237 10.352L2.99237 16.752C2.82178 18.5717 2.73648 19.4815 3.03842 20.1843C3.30367 20.8016 3.76849 21.3121 4.35839 21.6338C5.0299 22 5.94374 22 7.77142 22H16.2293C18.057 22 18.9708 22 19.6423 21.6338C20.2322 21.3121 20.6971 20.8016 20.9623 20.1843C21.2643 19.4815 21.179 18.5717 21.0084 16.752L20.4084 10.352C20.2643 8.81535 20.1923 8.04704 19.8467 7.46616C19.5424 6.95458 19.0927 6.54511 18.555 6.28984C17.9444 6 17.1727 6 15.6293 6L8.37142 6C6.82806 6 6.05638 6 5.44579 6.28984C4.90803 6.54511 4.45838 6.95458 4.15403 7.46616C3.80846 8.04704 3.73643 8.81534 3.59237 10.352Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
+          @if(auth()->user())
+          <button id="bag">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:stroke-red-700">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+          </button>
+          @else
+          <a href="{{route('login')}}">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:stroke-red-700">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+          </a>
+          @endif
         </div>
       </div>
     </nav>
   </header>
   <div>
     <main class="pt-28">
+      <div id="backgroundBlur" class="w-screen h-screen bg-black/90 backdrop-blur-sm fixed top-0 z-40 hidden"></div>
+      <div id="bagDiv" class="fixed z-50 h-screen max-h-screen w-1/4 bg-white top-0 -right-2/4 overflow-auto scrollbar-x-hidden">
+        <div class="w-11/12 flex flex-row-reverse justify-between items-center h-[50px] m-auto">
+          <div class="w-3/4 flex justify-end">
+            <svg id="closeBagBtn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
+          <span class="font-semibold text-lg w-full flex justify-end">TU BOLSA</span>
+        </div>
+        @if(isset($purchases))
+        <div class="w-11/12 mt-4 mx-auto bg-gray-100 p-2">
+          <h1 class="w-full text-center font-semibold text-xl my-3">TOTAL</h1>
+          <div class="w-11/12 mx-auto bg-gray-200 h-[2px]"></div>
+          <div class="w-11/12 m-auto flex justify-between my-4">
+            <span class="text-gray-700 font-light">{{count($purchases[0]->purchase)}} productos</span>
+            <span class="text-gray-700 font-light">{{round($total, 2)}}</span>
+          </div>
+          <div class="w-11/12 m-auto flex justify-between my-4">
+            <span class="font-semibold">SUBTOTAL</span>
+            <span class="font-semibold">{{round($total, 2)}}</span>
+          </div>
+        </div>
+          
+          @foreach($purchases as $purchase)
+          @foreach($purchase->purchase as $bag)
+          @if($bag->images->first()?->url)
+          <div class="clothesBag w-11/12 m-auto flex justify-start gap-2 my-4">
+            <img src="{{$bag->images->first()?->url}}" class="w-32 h-40 object-cover" alt="">
+            <div class="flex flex-col w-full gap-1">
+              <span class="text-lg text-gray-700">{{$bag->name}}</span>
+              <span class="text-sm text-gray-500">{{$bag->type_product}}</span>
+              <span class="text-lg font-bold mr-2">{{$bag->price}}€</span>
+              <div class="h-full flex items-end w-full justify-end">
+                <div class="w-[40px] h-[40px] rounded-full bg-gray-100 flex justify-center items-center">
+                  <button class="deleteFromBag" value="{{$bag->id}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer hover:animate-pulse">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endif
+          @endforeach
+          @endforeach
+        @endif
+      </div>
       @yield('content')
     </main>
   </div>

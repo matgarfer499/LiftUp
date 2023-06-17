@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Clothe;
+use App\Models\User;
 use App\Models\Review;
 use App\Models\Color;
 use Illuminate\Http\Request;
@@ -34,7 +35,40 @@ class ClothesController extends Controller
             $gender = "Mujer";
         }
 
-        return view('clothes.clothes', compact('clothes', 'amount', 'gender', 'colors'));
+        if(auth()->user()){
+            $idUse = auth()->user()?->id;
+            $purchases = User::with('purchase')->where('id', $idUse)->get();
+            $total = 0;
+            foreach($purchases as $purchase){
+                foreach($purchase->purchase as $bag){
+                    $total += $bag->price;
+                }
+            }
+            $view1 = view('layouts.plantilla', compact('purchases', 'total'));
+            $view2 = view('clothes.clothes', compact('clothes', 'amount', 'gender', 'colors'));
+            return $view1->with('view2', $view2);
+        } else {
+            return view('clothes.clothes', compact('clothes', 'amount', 'gender', 'colors'));
+        }
+        
+
+
+    }
+
+    public function deleteBag(Request $request)
+    {
+        $idClo = $request->input('idClo');
+        $idUse = auth()->user()->id;
+
+        $user = User::findOrFail($idUse);
+
+        if ($user->purchase()->wherePivot('idClo', $idClo)->exists()) {
+            $user->purchase()->detach($idClo, ['idUse' => $idUse, 'idClo' => $idClo]);
+            return response()->json(['success' => true]);
+        } else {
+            $user->purchase()->attach($idClo, ['idUse' => $idUse, 'idClo' => $idClo]);
+            return response()->json(['success' => true]);
+        }
     }
 
     public function view($id)
@@ -51,7 +85,7 @@ class ClothesController extends Controller
             }
             // Asignar el valor de $isLiked al objeto $man
             $image->isLiked = $isLiked;
-        }
+        }   
 
         $colores = Clothe::with('clothingColor')->where('id', $id)->get();
 

@@ -56,7 +56,7 @@ class User extends Authenticatable
     }
 
     public function purchase(){
-        return $this->belongsToMany(User::class, 'purchases', 'idUse', 'idClo');
+        return $this->belongsToMany(Clothe::class, 'purchases', 'idUse', 'idClo')->with(["images"]);
     }
 
 }

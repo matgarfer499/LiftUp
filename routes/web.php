@@ -43,6 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //Añadir o eliminar ropa de la wishlist
     Route::post('/wishlist/add', [WishlistController::class, 'addRemoveToWishlist'])->name('wishlist.add');
+    //Eliminar ropa del carrito
+    Route::post('/clothes/bag/delete', [ClothesController::class, 'deleteBag'])->name('bag.delete');
 });
 
 require __DIR__.'/auth.php'; //NO TOCAR SIN SABER QUE HAGO
