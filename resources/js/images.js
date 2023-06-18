@@ -1,12 +1,12 @@
 "use strict"
 
-//Cambiar el + por un - y viceversa al desplegar los materiales de la ropa
+//Change the summary when you click on the details
 
 materialsDisplay.addEventListener("click", function(){
     $("#moreLess svg").toggleClass('hidden');
 });
 
-//Seleccionar imagenes y que se desplacen a la imagen seleccionada
+//See the clothes photo when you click it
 
 const imgContainers = document.querySelectorAll('.imgContainer');
 const imgSelector = document.querySelectorAll(".imgSelector");

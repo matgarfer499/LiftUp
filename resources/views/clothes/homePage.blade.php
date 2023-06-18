@@ -85,19 +85,19 @@
                     <source src="{{ asset('videos/woman.mp4') }}" />
                 </video>
             </div>
-            <h1 id="title">FUERZA Y ESTILO</h1>
+            <h1 id="title"> {{__('messages.title')}}</h1>
         </div>
         <div class="section collection">
             <div id="collection">
-                <h2>Lo último en hombre</h2>
+                <h2>{{__('messages.menTrending')}}</h2>
                 <div id="menClothes">
-                    <a id="menLink" href="{{route('clothes.index', ['gender' => 'H'])}}">Ver colección <svg id="arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <a id="menLink" href="{{route('clothes.index', ['gender' => 'H'])}}">{{__('messages.collection')}} <svg id="arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                         </svg>
                     </a>
                 </div>
                 <div id="clothesCollection">
-                    @foreach($menClothes as $men) 
+                    @foreach($menClothes as $men)
                     @if($men->images->first()?->url)
                     <div id="clothesDiv">
                         <a href="{{route('images.see', ['id' => $men->id])}}">
@@ -113,56 +113,50 @@
                 </div>
             </div>
         </div>
-    <div class="section theBest">
-        <div class="photo">
-            <img src="https://cdn.shopify.com/s/files/1/0156/6146/files/view_all_adapt_1900x.jpg?v=1675882090"></img>
+        <div class="section theBest">
+            <div class="photo">
+                <img src="https://cdn.shopify.com/s/files/1/0156/6146/files/view_all_adapt_1900x.jpg?v=1675882090"></img>
+            </div>
+            <div id="photoContainer">
+                <canvas id="photoCanvas"></canvas>
+            </div>
+            <div id="bestInfo">
+                <h3>{{__('messages.theBest')}}</h3>
+                <span>{{__('messages.theBestText')}}</span>
+                <a id="womenLink" href="{{route('clothes.index', ['gender' => 'M'])}}">IR A COMPRAR</a>
+            </div>
         </div>
-        <div id="photoContainer">
-            <canvas id="photoCanvas"></canvas>
-        </div>
-        <div id="bestInfo">
-            <h3>SOLO LO MEJOR</h3>
-            <span>SON LO MAS COMPRADO POR UNA RAZON</span>
-            <a id="womenLink" href="{{route('clothes.index', ['gender' => 'M'])}}">IR A COMPRAR</a>
-        </div>
-    </div>
-    <div class="section foot">
-        <div>
-            <h1 id="quoteTitle">NO ES SOLO TU ENTRENAMIENTO</h1>
-            <p class="quote">La comunidad LiftUp se dedica a liberar el potencial a través del acondicionamiento y las cosas que hacemos hoy para prepararnos para mañana.
-                Cuando se trata de rendir al máximo, no debería haber obstáculos, y menos aún tu ropa de entrenamiento. Por eso, todo lo relacionado con la ropa de
-                gimnasio y los accesorios que diseñamos para ti tiene en mente tu progreso y los mejores resultados. Queremos que tengas las sudaderas con capucha
-                más cómodas, los leggings más cómodos y sin costuras, y las camisetas de entrenamiento con los diseños más innovadores para que te muevas cuando
-                más lo necesitas.
-            </p>
-            <p class="quote">
-                Ropa de entrenamiento, ropa de running y ropa de estar por casa que cambian las reglas del juego. No se trata sólo de los diseños, sino de las personas
-                que los llevan.
-            </p>
-        </div>
-        <footer>
-            <ul>Conocenos
-                <li>Trabajar con nosotros</li>
-                <li>Sobre LiftUp</li>
-            </ul>
-            <ul>Metodos de pago
-                <li>Métodos de pago</li>
-                <li>Cheque regalo</li>
-            </ul>
-            <ul>Redes sociales
-                <li>Instagram</li>
-                <li>Youtube</li>
-                <li>Tiktok</li>
-            </ul>
-            <ul>Ayuda
-                <li>FAQ</li>
-                <li>Información envio</li>
-                <li>Política de devoluciones</li>
-                <li>Hacer una devolución</li>
-            </ul>
+        <div class="section foot">
+            <div>
+                <h1 id="quoteTitle">{{__('messages.quoteTitle')}}</h1>
+                <p class="quote">{{__('messages.quote')}}
+                </p>
+                <p class="quote">
+                {{__('messages.quote2')}}
+                </p>
+            </div>
+            <footer>
+                <ul>{{__('messages.ul1')}}
+                    <li>{{__('messages.li1')}}</li>
+                    <li>{{__('messages.li2')}}</li>
+                </ul>
+                <ul>{{__('messages.ul2')}}
+                    <li>{{__('messages.li3')}}</li>
+                    <li>{{__('messages.li4')}}</li>
+                </ul>
+                <ul>{{__('messages.ul3')}}
+                    <li>Instagram</li>
+                    <li>Youtube</li>
+                    <li>Tiktok</li>
+                </ul>
+                <ul>{{__('messages.ul4')}}
+                    <li>FAQ</li>
+                    <li>{{__('messages.li8')}}</li>
+                    <li>{{__('messages.li9')}}</li>
+                    <li>{{__('messages.li10')}}</li>
+                </ul>
             </footer>
         </div>
     </div>
 </body>
-
 </html>

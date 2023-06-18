@@ -19,7 +19,7 @@ backgroundBlur.click(closeFilters);
 
 $("#closeBagBtn").click(closeFilters);
 
-//funcion para cerrar el div de los filtros
+//close the filters 
 export function closeFilters() {
     backgroundBlur.delay(400).queue(function (next) {
         $(this).addClass("hidden");
@@ -34,7 +34,7 @@ export function closeFilters() {
     $("body").css("overflow", "visible");
 }
 
-//Eliminar ropa de la bolsa
+//Delete the clothes of the shopping bag
 
 $(".deleteFromBag").each(function(){
     $(this).on("click", function() {
@@ -56,7 +56,7 @@ function addDeleteBag(id) {
         url: "/clothes/bag/delete",
         type: "POST",
         headers: {
-            "X-CSRF-TOKEN": token, // Agregar el token CSRF como un encabezado personalizado
+            "X-CSRF-TOKEN": token, 
         },
         data: { idClo: idClo },
         success: function (response) {

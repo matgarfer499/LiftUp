@@ -23,14 +23,13 @@ class ClothesController extends Controller
         $colors = Color::get();
         
         foreach ($clothes as $clothe) {
-            $isLiked = false; // Valor predeterminado
+            $isLiked = false; 
             foreach ($clothe->wishlist as $liked) {
                 if ($liked->pivot->idUse == auth()->user()?->id) {
-                    $isLiked = true; // Se encontró un "liked"
-                break; // Salir del bucle interno
+                    $isLiked = true;
+                break;
                 }
             }
-            // Asignar el valor de $isLiked al objeto $man
             $clothe->isLiked = $isLiked;
         }
 
@@ -81,14 +80,13 @@ class ClothesController extends Controller
         $images = Clothe::where('id', $id)->with('images')->with('wishlist')->get();
 
         foreach ($images as $image) {
-            $isLiked = false; // Valor predeterminado
+            $isLiked = false;
             foreach ($image->wishlist as $liked) {
                 if ($liked->pivot->idUse == auth()->user()?->id) {
-                    $isLiked = true; // Se encontró un "liked"
-                break; // Salir del bucle interno
+                    $isLiked = true;
+                break;
                 }
             }
-            // Asignar el valor de $isLiked al objeto $man
             $image->isLiked = $isLiked;
         }   
 
@@ -152,14 +150,13 @@ class ClothesController extends Controller
         
         
         foreach ($clothes as $clothe) {
-            $isLiked = false; // Valor predeterminado
+            $isLiked = false;
             foreach ($clothe->wishlist as $liked) {
                 if ($liked->pivot->idUse == auth()->user()?->id) {
-                    $isLiked = true; // Se encontró un "liked"
-                break; // Salir del bucle interno
+                    $isLiked = true;
+                break;
                 }
             }
-            // Asignar el valor de $isLiked al objeto $man
             $clothe->isLiked = $isLiked;
         }
 

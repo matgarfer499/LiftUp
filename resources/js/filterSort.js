@@ -41,7 +41,7 @@ $(".colorCheckbox").each(function () {
     });
 });
 
-//Slider de precios usando la libreria uiSlider
+
 let minPrice = document.getElementById("min-price");
 let maxPrice = document.getElementById("max-price");
 
@@ -62,8 +62,7 @@ noUiSlider.create(slider, {
         },
     },
 });
-
-//Actualiza los valores de los precios mínimo y máximo cuando cambia el slider
+//update the values of the minimun and max price when you move the slider
 slider.noUiSlider.on("update", function (values, handle) {
     if (handle === 0) {
         minPrice.textContent = values[0] + "€";
@@ -107,7 +106,7 @@ $("#filterBtn").click(function () {
         url: "/filter/" + gender + "/" + sort,
         type: "GET",
         headers: {
-            "X-CSRF-TOKEN": token, // Agregar el token CSRF como un encabezado personalizado
+            "X-CSRF-TOKEN": token, 
         },
         data: {
             sort: sort,

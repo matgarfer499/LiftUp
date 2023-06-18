@@ -13,7 +13,7 @@ $input.on("input", function (event) {
             url: urlData + "/" + $input.val(),
             type: "GET",
             headers: {
-                "X-CSRF-TOKEN": token, // Agregar el token CSRF como un encabezado personalizado
+                "X-CSRF-TOKEN": token, 
             },
             data: {
                 search: $input.val(),

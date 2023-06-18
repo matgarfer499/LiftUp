@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClothesController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,18 +22,18 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-//Home page
+    //Home page
 Route::get('/', [ClothesController::class, 'home']);
-//ver ropas
-Route::get('/clothes/{gender}', [ClothesController::class, 'clothes'])->name('clothes.index');
-//buscar ropas
-Route::get('/clothes/{gender}/{search}', [ClothesController::class, 'search'])->name('search.index');
-//Filtrado y ordenamiento
-Route::get('/filter/{gender}/{sort}', [ClothesController::class, 'sortFilter'])->name('sortFilter.index');
-//ver ropa especifica al clickar en la imagen
-Route::get('/clothing/{id}', [ClothesController::class, 'view'])->name('images.see');
-//Ver ropa marcada como "me gusta"
-Route::get('/wishlist/{idUse}', [WishlistController::class, 'viewLikes'])->name('wishlist.index');
+    //ver ropas
+    Route::get('/clothes/{gender}', [ClothesController::class, 'clothes'])->name('clothes.index');
+    //buscar ropas
+    Route::get('/clothes/{gender}/{search}', [ClothesController::class, 'search'])->name('search.index');
+    //Filtrado y ordenamiento
+    Route::get('/filter/{gender}/{sort}', [ClothesController::class, 'sortFilter'])->name('sortFilter.index');
+    //ver ropa especifica al clickar en la imagen
+    Route::get('/clothing/{id}', [ClothesController::class, 'view'])->name('images.see');
+    //Ver ropa marcada como "me gusta"
+    Route::get('/wishlist/{idUse}', [WishlistController::class, 'viewLikes'])->name('wishlist.index');
 
 Route::middleware('auth')->group(function () {
     //Profile options

@@ -9,7 +9,7 @@ $searchBar.on("click", function () {
 });
 
 $(document).on("click", function (event) {
-    // Comprobar si se hizo clic fuera del elemento específico
+    // Check if the click was made out of the element
     if ($searchInput.hasClass("active") && !$(event.target).closest(".searchBar").length && !$(event.target).closest("#searchInput").length) {
         $searchInput.removeClass("opacity-100 active");
         $searchInput.addClass("opacity-0 pointer-events-none");
@@ -27,7 +27,7 @@ $searchInput.on("input", function (event) {
             url:  gender + "/" + $searchInput.val(),
             type: "GET",
             headers: {
-                "X-CSRF-TOKEN": token, // Agregar el token CSRF como un encabezado personalizado
+                "X-CSRF-TOKEN": token,
             },
             data: {
                 search: $searchInput.val(),

@@ -19,7 +19,7 @@
   @vite('resources/js/bagSlider.js')
 </head>
 
-<body class="bg-white m-0">
+<body class="bg-white m-0 font-sans">
   <header class="">
     <nav class="fixed z-10 w-full flex justify-between items-center bg-white border-b-[1px] border-b-gray-400">
       <div class="sm:hidden flex justify-evenly w-3/12">

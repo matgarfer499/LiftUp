@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
-    //Mostrar datos de la ropa
+    //Show the data of the clothes
     public function all()
     {
         $clothes = Clothe::paginate(7);
@@ -81,7 +81,7 @@ class AdminController extends Controller
         return redirect()->route('admin.all');
     }
 
-    //Mostrar datos de las imagenes
+    //show the images of the clothes
     public function images()
     {
         $images = Clothe::with('images')->paginate(5);

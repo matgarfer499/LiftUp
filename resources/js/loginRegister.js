@@ -1,6 +1,5 @@
 "use strict"
 
-//Cambiar y ocultar formulario de registro y login
 const loginForm = $("#loginForm");
 const registerForm = $("#registerForm");
 const loginBtn = $("#loginBtn");
@@ -9,6 +8,7 @@ const registerBtn = $("#registerBtn");
 const scrollForm = $("#scrollForm");
 const scrollMove = $("#scrollMove");
 
+//hide the login form to show the register form
 loginBtn.click(function(){
     $("#loginBtn").removeClass("opacity-30");
     $("#registerBtn").addClass("opacity-30");
@@ -16,7 +16,7 @@ loginBtn.click(function(){
     registerForm.addClass("hidden");
     $("#scrollMove").animate({left: 0}, 250);
 });
-
+//hide the register form to show the login form
 registerBtn.click(function(){
     $("#loginBtn").addClass("opacity-30");
     $("#registerBtn").removeClass("opacity-30");
