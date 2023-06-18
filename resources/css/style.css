@@ -1,0 +1,465 @@
+body {
+  margin: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.navObject {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo {
+  height: 150px;
+}
+
+#login {
+  width: 35px;
+  height: 35px;
+  stroke: black;
+}
+
+#login:hover {
+  stroke: #b91c1c;
+}
+
+#sections {
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.section:nth-child(3),
+.section:nth-child(4) {
+  height: 90vh;
+}
+
+.home,
+.theBest,
+.foot {
+  background-color: #D0CBA8;
+}
+
+#imagesBox {
+  margin: 5% auto;
+  width: 90%;
+  height: 80vh;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+#imagesBox > video:nth-child(2) {
+  align-self: flex-start;
+}
+
+#imagesBox > video:first-child,
+#imagesBox > video:last-child {
+  align-self: flex-end;
+}
+
+.videos {
+  width: 25%;
+  height: 80%;
+  object-fit: fill;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.344);
+}
+
+#title {
+  position: absolute;
+  text-align: center;
+  color: rgba(255, 255, 255, 0);
+  -webkit-text-stroke: 4px white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 40px;
+  font-size: 14rem;
+  top: 1%;
+  left: 2%;
+  overflow: hidden;
+}
+
+#collection {
+  width: 90%;
+  height: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+h2 {
+  width: 35%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 3rem;
+}
+
+#menClothes {
+  width: 35%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  color: #7B7A7A;
+}
+
+#menLink {
+  padding: 8px 20px;
+  border: 2px solid #7B7A7A;
+  border-radius: 9999px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+#menLink:hover {
+  color: #4e4e4e;
+  padding: 10px 22px;
+  border-color: #4e4e4e;
+}
+
+#arrow {
+  margin-left: 4px;
+  width: 20px;
+  height: 20px;
+}
+
+#clothesCollection {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+#clothesCollection > div {
+  margin: 0 1%;
+  display: inline-block;
+  width: 25%;
+  height: 500px;
+}
+
+#clothesCollection::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+#clothesCollection::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}
+
+.clothesInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.clothesName {
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.clothesPrice {
+  font-weight: bold;
+}
+
+.photo, #photoContainer {
+  width: 30%;
+  height: 450px;
+  background-color: white;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+
+.photo > img, #photoCanvas {
+  margin-top: 20px;
+  height: 350px;
+  width: 90%;
+  object-fit: cover;
+}
+
+.photo:first-child {
+  top: 10%;
+  right: 20%;
+}
+
+#photoContainer {
+  bottom: 0;
+  right: 0;
+}
+
+#bestInfo {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  width: 90%;
+  height: 100%;
+}
+
+#bestInfo > h3 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+a {
+  text-decoration: none;
+}
+
+#bestInfo > span {
+  width: 20%;
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+
+#womenLink {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: black;
+  color: white;
+  border-radius: 9999px;
+}
+
+#quoteTitle {
+  width: 90%;
+  font-weight: bold;
+  margin: 10% auto 3%;
+}
+
+.quote {
+  width: 90%;
+  font-weight: 500;
+  text-align: justify;
+  color: #4e4e4e;
+  margin: 0 auto 2%;
+  font-size: large;
+}
+
+.section.foot > div {
+  border-bottom: 2px solid #4e4e4e;
+  height: 50%;
+}
+
+footer {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  gap: 20px;
+}
+
+ul {
+  font-weight: 800;
+  font-size: x-large;
+  list-style: none;
+}
+
+li {
+  font-size: medium;
+  font-weight: 400;
+  color: #4e4e4e;
+  margin: 5% auto 5%;
+  cursor: pointer;
+}
+
+li:hover {
+  text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+@media (max-width: 1400px) {
+  #title {
+    font-size: 13rem;
+  }
+}
+@media (max-width: 1300px) {
+  #title {
+    font-size: 12rem;
+  }
+}
+@media (max-width: 1100px) {
+  #title {
+    font-size: 10rem;
+  }
+  .videos {
+    width: 35%;
+  }
+  #clothesCollection > div {
+    width: 40%;
+  }
+  .photo, #photoContainer {
+    width: 25%;
+    height: 350px;
+  }
+  .photo > img, #photoCanvas {
+    margin-top: 20px;
+    height: 250px;
+  }
+  .photo:first-child {
+    top: 25%;
+  }
+}
+@media (max-width: 900px) {
+  #title {
+    top: 30%;
+    font-size: 5rem;
+    color: white;
+    -webkit-text-stroke: black;
+  }
+  .videos {
+    width: 40%;
+  }
+  .videos:nth-child(2) {
+    display: none;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  #clothesCollection > div {
+    width: 50%;
+  }
+  #photoContainer {
+    width: 50%;
+    height: 450px;
+  }
+  #bestInfo {
+    justify-content: start;
+  }
+  #photoCanvas {
+    margin-top: 20px;
+    height: 350px;
+  }
+  .photo:first-child {
+    display: none;
+  }
+  #womenLink {
+    font-size: 1rem;
+    width: 30%;
+  }
+  #quoteTitle {
+    font-size: 1.5rem;
+  }
+  .quote {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  #title {
+    top: 60%;
+    font-size: 3rem;
+  }
+  ul {
+    font-size: 1rem;
+  }
+  li {
+    font-size: 0.7rem;
+  }
+  .videos {
+    width: 100%;
+  }
+  .videos:nth-child(3) {
+    display: none;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  #clothesCollection > div {
+    width: 65%;
+  }
+  #bestInfo > h3 {
+    font-size: 1.5rem;
+  }
+  #bestInfo > span {
+    font-size: 1rem;
+    width: 100%;
+  }
+  #womenLink {
+    font-size: 1rem;
+    width: 80%;
+  }
+  #photoContainer {
+    width: 100%;
+    height: 360px;
+  }
+  #photoCanvas {
+    margin-top: 20px;
+    height: 350px;
+  }
+  #quoteTitle {
+    font-size: 1rem;
+  }
+  .quote {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 500px) {
+  #title {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  #clothesCollection > div {
+    width: 75%;
+  }
+  #menLink {
+    font-size: small;
+  }
+  footer {
+    justify-content: center;
+    gap: 0;
+  }
+  ul {
+    font-size: 0.7rem;
+  }
+  li {
+    font-size: 0.5rem;
+    margin-bottom: 20px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
