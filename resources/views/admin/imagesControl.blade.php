@@ -103,15 +103,16 @@
                             </svg>
                         </button>
                         <x-modal name="createImg-{{$image->id}}" focusable>
-                            <form method="POST" action="{{ route('admin.uploadImg') }}" class="p-6">
+                            <form method="POST" action="{{ route('admin.uploadImg') }}" class="p-6" enctype="multipart/form-data">
                                 @csrf
                                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                                     Añadir imagen a {{$image->type_product}} {{$image->name}}
                                 </h2>
                                 <input type="text" id="idClo" name="idClo" wire:model="idClo" value="{{$image->id}}" class="form-input hidden" />
                                 <div class="my-6">
-                                    <label for="url" class="w-full text-gray-700 font-bold mb-2">Introduce la url:</label>
-                                    <input type="text" id="url" name="url" wire:model="url" class="form-input rounded-md shadow-sm mt-1 w-full" />
+                                    <label for="url{{$image->id}}" class="w-full text-gray-700 font-bold mb-2">Sube una imagen:</label>
+                                    <input type="file" id="url{{$image->id}}" name="url" wire:model="url" class="imgs form-input rounded-md shadow-sm mt-1 w-full" />
+                                    <input type="text" id="name" name="name" value="{{$image->name}}" class="hidden">
                                     @error('url') <span class="text-red-500">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="mt-6 flex justify-end">

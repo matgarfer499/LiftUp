@@ -14,7 +14,7 @@
   <title>@yield('title')</title>
   @yield('scripts')
   @vite('resources/css/app.css')
-  @vite('resources/css/homePage.css')
+  @vite('resources/css/slider.css')
   @vite('resources/js/clothesSearchBar.js')
   @vite('resources/js/bagSlider.js')
 </head>

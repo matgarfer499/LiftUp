@@ -8,12 +8,13 @@ use App\Models\Image;
 use App\Models\Color;
 use App\Models\Size;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
     //Mostrar datos de la ropa
     public function all()
-    {   
+    {
         $clothes = Clothe::paginate(7);
         return view('admin.adminControl', compact('clothes'));
     }
@@ -45,15 +46,17 @@ class AdminController extends Controller
         return redirect()->route('admin.all')->with('success', 'La ropa ha sido agregada exitosamente.');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $clothe = Clothe::findOrFail($id);
         $clothe->delete();
         return redirect()->back()->with('mensaje', 'El registro ha sido eliminado correctamente.');
     }
 
-    public function edit(Request $request, $id){
+    public function edit(Request $request, $id)
+    {
         $clothe = Clothe::findOrFail($id);
-        
+
         $validarDatos = $request->validate([
             'type_product' => 'required',
             'name' => 'required',
@@ -91,15 +94,19 @@ class AdminController extends Controller
         $validarDatos = $request->validate([
             'idClo' => 'required',
             'url' => 'required',
+            'name' => 'required',
         ]);
+        $path = $request->file('url')->store('public/');
+        $storage_path = Storage::url($path);
 
         $image = new Image();
         $image->idClo = $validarDatos['idClo'];
-        $image->url = $validarDatos['url'];
+        $image->url = $storage_path;
         $image->save();
 
         return redirect()->route('admin.images');
     }
+
 
     public function deleteImg($id)
     {
@@ -123,14 +130,14 @@ class AdminController extends Controller
         $url = $request->input('url');
 
         $clothes = Clothe::where(function ($query) use ($search) {
-            $query->where('type_product', 'like', '%'.$search.'%')
-                  ->orWhere('name', 'like', '%'.$search.'%')
-                  ->orWhere('gender', 'like', '%'.$search.'%');
+            $query->where('type_product', 'like', '%' . $search . '%')
+                ->orWhere('name', 'like', '%' . $search . '%')
+                ->orWhere('gender', 'like', '%' . $search . '%');
         });
 
-        if($url === "imagenes"){
+        if ($url === "imagenes") {
             $clothes = $clothes->with('images');
-        } else if($url === "sizesColors"){
+        } else if ($url === "sizesColors") {
             $clothes = $clothes->with('clothingColor')->with('clothingSize');
         }
         $adminColors = Color::get();

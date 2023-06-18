@@ -16,7 +16,30 @@
         <h4 class="font-semibold text-md text-gray-500 mb-2 text-center">Foto de perfil</h4>
         <div class="group flex items-center justify-center">
             <img src="{{auth()->user()->profile_picture}}" class="w-[120px] h-[120px] object-cover rounded-full" alt=""></img>
-            <button class="absolute px-4 py-1 border-black border-[1px] top-32 left-15 text-white bg-black group-hover:opacity-90 opacity-0 duration-500 ease-in-out rounded-md">Editar</button>
+            <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'uploadPhoto{{auth()->user()->id}}')" class="absolute px-4 py-1 border-black border-[1px] top-32 left-15 text-white bg-black group-hover:opacity-90 opacity-0 duration-500 ease-in-out rounded-md">Editar</button>
+            <x-modal name="uploadPhoto{{auth()->user()->id}}" focusable>
+                <form method="POST" action="{{ route('profile.uploadPhoto' , ['id' => auth()->user()->id]) }}" class="p-6" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                        Sube tu foto de perfil
+                    </h2>
+                    <input type="text" id="idUse" name="idUse" wire:model="idUse" value="{{auth()->user()->id}}" class="form-input hidden" />
+                    <div class="my-6">
+                        <label for="profilePhoto" class="w-full text-gray-700 font-bold mb-2">Sube una imagen:</label>
+                        <input type="file" id="profilePhoto" name="profilePhoto" wire:model="profilePhoto" class="form-input rounded-md shadow-sm mt-1 w-full" />
+                        @error('profilePhoto') <span class="text-red-500">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <x-secondary-button x-on:click="$dispatch('close')">
+                            {{ __('Cancelar') }}
+                        </x-secondary-button>
+                        <x-primary-button class="ml-3">
+                            {{ __('Cambiar foto') }}
+                        </x-primary-button>
+                    </div>
+                </form>
+            </x-modal>
         </div>
     </div>
     <form method="post" action="{{ route('profile.update') }}" class="border-2 border-gray-300 rounded-md w-full lg:w-9/12 p-4 flex justify-between flex-wrap shadow-sm shadow-gray-500">

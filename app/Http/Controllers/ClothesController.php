@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 
 class ClothesController extends Controller
 {
+    public function home(){
+        $menClothes = Clothe::where('gender', 'H')->with('images')->inRandomOrder()->limit(30)->get();
+
+        return view('clothes.homePage', compact('menClothes'));
+    }
     public function clothes($gender)
     {
         $clothes = Clothe::where('gender', $gender)->with('images')->with('wishlist')->get();

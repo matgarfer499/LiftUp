@@ -22,7 +22,7 @@
             <thead>
                 <tr class="text-[#081226]">
                     <th class="p-4 w-1/6">Producto</th>
-                    <th class="p-4 w-1/5">Tallas</th>
+                    <th class="p-4 w-2/5">Tallas</th>
                     <th class="p-4 w-7/12">Colores</th>
                     <th class="p-4"></th>
                 </tr>
@@ -79,70 +79,7 @@
                             @endforeach
                         </div>
                     </td>
-                    <td>
-                        <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'edit-clothe-{{$sizeColor->id}}')" class="cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:stroke-green-400">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                            </svg>
-                        </button>
-                        <x-modal name="edit-clothe-{{$sizeColor->id}}" focusable>
-                            <form method="POST" action="{{route('admin.edit', $sizeColor->id)}}" class="p-6">
-                                @csrf
-                                @method('PUT')
-                                <h2 class="text-lg text-center uppercase font-medium text-gray-900 dark:text-gray-100">
-                                    {{ __('Editar tallas y colores') }}
-                                </h2>
-                                <label for="type_product" class="w-full text-gray-700 font-bold mb-2">Colores seleccionados:</label>
-                                <div class="w-full grid grid-cols-8">
-                                    @foreach($adminColors as $color)
-                                    <div class="colorCheckbox w-1/3 m-auto relative">
-                                        <input name="color" type="checkbox" id="{{$color->color}}" value="{{$color->color}}" class="noChecked bottom-0 right-0 opacity-0 absolute pointer-events-none">
-                                        <div class="w-8 h-8 rounded-full border-black/50 border-2 m-2 relative" style="background-color:#{{$color->color}}">
-                                            <label for="{{$color->color}}" class="w-full h-full absolute"></label>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 hidden pointer-events-none absolute top-2 left-2">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                                <label for="type_product" class="w-full text-gray-700 font-bold my-2">Tallas seleccionadas:</label><br>
-                                <div class="w-full flex justify-center gap-2">
-                                    @foreach($adminSizes as $sizes)
-                                    <div class="checkbox relative">
-                                        <input name="sizes" type="checkbox" id="XS" value="XS" class="noChecked pointer-events-none bottom-0 right-0 opacity-0 absolute checked:bg-black" checked>
-                                        <label for="XS" class="flex justify-center items-center py-2 w-20 border-2 border-gray-400 my-1">{{$sizes->size}}</label>
-                                    </div>
-
-                                    @endforeach
-                                </div>
-                                <div class="mb-4">
-                                    <label for="type_product" class="w-full text-gray-700 font-bold mb-2">Tallas seleccionadas:</label>
-                                    <input type="text" id="type_product" name="type_product" wire:model="type_product" class="form-input rounded-md shadow-sm mt-1 w-full text-black" value="{{$sizeColor->type_product}}" />
-                                    @error('type_product') <span class="text-red-500">{{ $message }}</span> @enderror
-                                </div>
-                                <div class="flex justify-center gap-2 mb-4">
-                                    <div class="flex justify-center items-center">
-                                        <label class="text-gray-700 font-bold" for="gender">Hombre</label>
-                                        <input id="gender" class="mt-1 ml-1" type="radio" name="gender" value="H" />
-                                    </div>
-                                    <div class="flex justify-center items-center">
-                                        <label class="text-gray-700 font-bold" for="gender">Mujer</label>
-                                        <input id="gender" class="mt-1 ml-1" type="radio" name="gender" value="M" />
-                                    </div>
-                                    @error('gender') <span class="text-red-500">{{ $message }}</span> @enderror
-                                </div>
-                                <div class="mt-6 flex justify-end">
-                                    <x-primary-button class="mr-3">
-                                        {{ __('Editar') }}
-                                    </x-primary-button>
-                                    <x-secondary-button x-on:click="$dispatch('close')">
-                                        {{ __('Cancelar') }}
-                                    </x-secondary-button>
-                                </div>
-                            </form>
-                        </x-modal>
-                    </td>
+                    
                 </tr>
                 @endforeach
             </tbody>

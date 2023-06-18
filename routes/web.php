@@ -22,9 +22,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //Home page
-Route::get('/', function () {
-    return view('clothes.home')->name('home');
-});
+Route::get('/', [ClothesController::class, 'home']);
 //ver ropas
 Route::get('/clothes/{gender}', [ClothesController::class, 'clothes'])->name('clothes.index');
 //buscar ropas
@@ -39,6 +37,7 @@ Route::get('/wishlist/{idUse}', [WishlistController::class, 'viewLikes'])->name(
 Route::middleware('auth')->group(function () {
     //Profile options
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/{id}', [ProfileController::class, 'upload'])->name('profile.uploadPhoto');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //Añadir o eliminar ropa de la wishlist

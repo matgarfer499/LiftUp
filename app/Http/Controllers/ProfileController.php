@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -34,6 +36,18 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
+        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    }
+
+    public function upload(Request $request)
+    {
+        $path = $request->file('profilePhoto')->store('public/');
+        $storage_path = Storage::url($path);
+
+        $user = User::findOrFail($request->idUse);
+
+        $user->profile_picture = $storage_path;
+        $user->save();
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
