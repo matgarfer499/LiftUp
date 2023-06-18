@@ -38,3 +38,12 @@ Puedes checkear todos los cambios realizados y de funcionalidades en mis commits
 
 ### Video funcionalidades(checkpoint)
 [Ver video](https://youtu.be/KZnF8F89qOk)
+
+## Video final + funcionamientos de la aplicacion
+[Ver video](https://youtu.be/xncTBT55uS0)
+
+### Bibliografía
+- [Documentacion Laravel 9](https://laravel.com/docs/9.x/readme)
+- [Documentacion Jquery](https://api.jquery.com/)
+- StackOverflow
+- [Documentacion tailwind](https://v2.tailwindcss.com/docs)
